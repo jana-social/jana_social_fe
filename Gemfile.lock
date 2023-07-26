@@ -152,6 +152,8 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.3-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.3-x86_64-linux)
+      racc (~> 1.4)
     orderly (0.1.1)
       capybara (>= 1.1)
       rspec (>= 2.14)
@@ -268,6 +270,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.6.3-x86_64-darwin)
+    sqlite3 (1.6.3-x86_64-linux)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     thor (1.2.2)
@@ -299,6 +302,8 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
+  x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
@@ -331,4 +336,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.17
+   2.4.13
