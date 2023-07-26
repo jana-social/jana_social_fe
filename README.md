@@ -1,8 +1,8 @@
 <h1> Jana Social </h1>
 
 [DB schema](https://erd.dbdesigner.net/designer/schema/1690390259-jana_social) <br>
-[Full team Miro board](https://miro.com/app/board/uXjVMz_g040=/)<br>
-[Users team Miro board](https://miro.com/app/board/uXjVMz5BkDM=/)
+[Full team Miro board](https://miro.com/app/board/uXjVMz_g040=/) <br>
+[Users team Miro board](https://miro.com/app/board/uXjVMz5BkDM=/) <br>
 [Events team Miro board](https://miro.com/app/board/uXjVMz4nZmc=/)
 
 
