@@ -1,1 +1,13 @@
 @import 'bootstrap';
+
+.logo-container {
+  display: flex; /* Use flexbox to center the logo */
+  justify-content: center; /* Horizontally center the logo */
+  align-items: center; /* Vertically center the logo */
+  background-color: black; /* Set the background color to black */
+  height: 100vh; /* Set the height of the container to full viewport height */
+}
+
+.logo {
+  max-width: 500px; /* Set a maximum width for the logo if necessary */
+}
