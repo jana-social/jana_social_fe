@@ -1,8 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe EventService do
-  describe 'get_events' do
-    it 'returns all events' do
+  describe "get_events" do
+    it "returns all events" do
       service = EventService.new
       events = service.get_all_events
       expect(events).to be_an(Array)
