@@ -18,5 +18,4 @@ class Event
 
     # @host = data[:attributes][:host]
   end
-            
 end

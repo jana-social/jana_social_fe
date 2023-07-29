@@ -1,5 +1,4 @@
 class EventsFacade
-
   def get_all_events
     service = EventsService.new
     request = service.get_all_events

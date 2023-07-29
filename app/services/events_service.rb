@@ -1,5 +1,4 @@
 class EventsService
-
   def get_all_events
     get_url("/api/v1/events")
   end
@@ -9,7 +8,7 @@ class EventsService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def conn 
-    Faraday.new(url: 'http://localhost:3000')
+  def conn
+    Faraday.new(url: "http://localhost:3000")
   end
 end
