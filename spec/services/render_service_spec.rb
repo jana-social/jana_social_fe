@@ -58,30 +58,51 @@ RSpec.describe RenderService do
     end
   end
 
-  describe 'get_events' do
-    xit 'returns all events' do
+  describe "events" do
+    it "returns all events" do
       json_response = File.read("spec/fixtures/get_all_events.json")
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/events")
         .to_return(status: 200, body: json_response)
 
       results = RenderService.new.get_all_events
+      expect(results).to be_a(Hash)
 
-      expect(results).to be_a(Hash) 
-      expect(results.first).to be_an(Array) 
-      expect(results.first).to have_key(:title)
-      expect(results.first.title).to be_a(String)
-      expect(results.first).to have_key(:description)
-      expect(results.first.description).to be_a(String)
-      expect(results.first).to have_key(:street_address)
-      expect(results.first.street_address).to be_a(String)
-      expect(results.first).to have_key(:zipcode)
-      expect(results.first.zipcode).to be_a(String)
-      expect(results.first).to have_key(:date_time)
-      expect(results.first.date_time).to be_a(String)
-      expect(results.first).to have_key(:private_status)
-      expect(results.first.private_status).to be_a(Boolean)
-      expect(results.first).to have_key(:host)
-      expect(results.first.host).to be_a(Integer)
+      events = results[:data]
+      expect(events).to be_an(Array)
+
+      events.each do |event|
+        expect(event).to have_key(:id)
+        expect(event[:id]).to be_a(String)
+
+        expect(event).to have_key(:type)
+        expect(event[:type]).to be_a(String)
+
+        expect(event).to have_key(:attributes)
+        expect(event[:attributes]).to be_a(Hash)
+
+        attributes = event[:attributes]
+
+        expect(attributes).to have_key(:title)
+        expect(attributes[:title]).to be_a(String)
+
+        expect(attributes).to have_key(:description)
+        expect(attributes[:description]).to be_a(String)
+
+        expect(attributes).to have_key(:street_address)
+        expect(attributes[:street_address]).to be_a(String)
+
+        expect(attributes).to have_key(:zipcode)
+        expect(attributes[:zipcode]).to be_a(String)
+
+        expect(attributes).to have_key(:date_time)
+        expect(attributes[:date_time]).to be_a(String)
+
+        expect(attributes).to have_key(:private_status)
+        expect(attributes[:private_status]).to be_a(String) # change to boolean
+
+        expect(attributes).to have_key(:host)
+        expect(attributes[:host]).to be_a(String)
+      end
     end
   end
 end
