@@ -1,3 +1,4 @@
+require 'rails_helper'
 
 RSpec.describe EventsFacade, :vcr do
   describe "get_all_events" do
