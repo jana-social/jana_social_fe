@@ -9,13 +9,13 @@ class User
               :photo_url
 
   def initialize(data)
-    @name           = data[:username]
+    @username       = data[:username]
     @email          = data[:email]
     @zipcode        = data[:zipcode]
     @street_address = data[:street_address]
     @bio            = data[:bio]
     @likes          = data[:likes]
-    @dislikes       = data[:dilikes]
-    @photo_url      = data[:photo_url]
+    @dislikes       = data[:dislikes]
+    @photo_url      = data[:profile_image_link]
   end
 end
