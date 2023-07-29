@@ -3,4 +3,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "application#welcome"
+
+  resources :search, only: [:index, :show] do
+    resources :users, only: [:show]
+  end
+
 end
