@@ -57,8 +57,13 @@ RSpec.describe RenderService do
       end
     end
   end
-end
 
+
+  describe 'get_events' do
+    xit 'returns all events' do
+      service = RenderService.new
+      events = service.get_all_events
+      
       expect(events).to be_a(Hash) # switched from Array
       expect(events.first).to be_an(Array) # switched form Hash
       expect(events.first).to have_key(:title)
