@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User do
-  it 'exists and has attributes' do
+  it "exists and has attributes" do
     attributes = {
       username: "schroederJerde",
       email: "schroederJerde@gmail.com",

@@ -1,12 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe UserFacade do
-  context 'class methods' do
-    describe '::all_users' do
-      it 'returns a list of all users' do
-        json_response = File.read('spec/fixtures/users.json')
-        stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users").
-          to_return(status: 200, body: json_response)
+  context "class methods" do
+    describe "::all_users" do
+      it "returns a list of all users" do
+        json_response = File.read("spec/fixtures/users.json")
+        stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users")
+          .to_return(status: 200, body: json_response)
 
         results = UserFacade.new.all_users
 
@@ -26,11 +26,11 @@ RSpec.describe UserFacade do
       end
     end
 
-    describe '::find_user' do
-      it 'returns a list of all users' do
-        json_response = File.read('spec/fixtures/user.json')
-        stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1").
-          to_return(status: 200, body: json_response)
+    describe "::find_user" do
+      it "returns a list of all users" do
+        json_response = File.read("spec/fixtures/user.json")
+        stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1")
+          .to_return(status: 200, body: json_response)
 
         result = UserFacade.new.find_user(1)
 
