@@ -1,7 +1,7 @@
 class RenderService
 
   def get_all_events
-    get_url("api/v1/events")
+    get_url("/api/v1/events")
   end
 
   def user_index
