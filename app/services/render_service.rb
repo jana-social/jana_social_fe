@@ -1,4 +1,9 @@
 class RenderService
+
+  def get_all_events
+    get_url("/api/v1/events")
+  end
+
   def user_index
     get_url("/api/v1/users")
   end
@@ -12,7 +17,7 @@ class RenderService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def conn
-    Faraday.new(url: "https://jana-social-be.onrender.com/")
+  def conn 
+    Faraday.new(url: 'https://jana-social-be.onrender.com/')
   end
 end

@@ -1,21 +1,22 @@
 class Event
-  attr_reader :title,
+  attr_reader :id,
+              :title,
               :description,
               :street_address,
               :zipcode,
               :date_time,
-              :private,
+              :private_status,
               :host
 
   def initialize(data)
-    @title = data[:title]
-    @description = data[:description]
-    @street_address = data[:street_address]
-    @zipcode = data[:zipcode]
-    @date_time = data[:date_time]
-    @private = data[:private]
-    @host = data[:host] # might end up removing
+    @id = data[:id]
+    @title = data[:attributes][:title]
+    @description = data[:attributes][:description]
+    @street_address = data[:attributes][:street_address]
+    @zipcode = data[:attributes][:zipcode]
+    @date_time = data[:attributes][:date_time]
+    @private_status = data[:attributes][:private_status]
+    @host = data[:attributes][:host]
 
-    # @host = data[:attributes][:host]
   end
 end
