@@ -11,7 +11,6 @@ RSpec.describe EventsFacade do
         results = EventsFacade.new.get_all_events
 
         expect(results).to be_an(Array)
-
         results.each do |result|
           expect(result).to be_a(Event)
           expect(result.title).to be_a(String)
@@ -19,7 +18,7 @@ RSpec.describe EventsFacade do
           expect(result.street_address).to be_a(String)
           expect(result.zipcode).to be_a(String)
           expect(result.date_time).to be_a(String)
-          # expect(result.private_status).to be_a(String)
+          expect(result.private_status).to be_a(String) # change to boolean
           expect(result.host).to be_a(String)
         end
       end
