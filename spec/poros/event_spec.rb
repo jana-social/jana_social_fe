@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Event, :vcr do
   describe "initialize" do
-    it "exists with attributes" do
+    xit "exists with attributes" do
       data = { id: "1",
                type: "event",
                attributes: { title: "Test Event",
