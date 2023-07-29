@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Event, :vcr do
+RSpec.describe Event do
   describe 'initialize' do
     it 'exists with attributes' do
       data = { id: '1',
