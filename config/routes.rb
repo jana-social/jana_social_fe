@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :events, only: [:index]
+      resources :search, only: [:index, :create]
+      namespace :search do
+        resources :users, only: [:show]
+      end
+      get "dashboard", to: "search#dashboard", as: :search_dashboard
     end
   end
-
-  resources :search, only: [:index, :show] do
-    resources :users, only: [:show]
-  end
-
 end

@@ -1,0 +1,7 @@
+<%= "Find Friends" %>
+
+<%= form_tag api_v1_search_index_path do %>
+  <%= label_tag :distance, 'Distance:' %>
+  <%= text_field_tag :distance %>
+  <%= submit_tag 'Search' %>
+<% end %>
