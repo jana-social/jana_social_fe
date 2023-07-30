@@ -23,7 +23,7 @@ RSpec.describe Event do
       expect(event.street_address).to eq('123 Main St')
       expect(event.zipcode).to eq('80202')
       expect(event.date_time).to eq('8-17-23, 5:25 PM')
-      expect(event.private_status).to eq(false)
+      expect(event.private_status).to eq(false) # 
       expect(event.host).to eq(1)
     end
   end

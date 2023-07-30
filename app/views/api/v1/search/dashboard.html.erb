@@ -1,7 +1,11 @@
 <%= "Find Friends" %>
 
-<%= form_tag api_v1_search_index_path do %>
-  <%= label_tag :distance, 'Distance:' %>
-  <%= text_field_tag :distance %>
+<%= form_tag api_v1_search_index_path, method: :post do %>
+  <%= label_tag :zipcode, 'Enter your zipcode:' %>
+  <%= text_field_tag :zipcode, params[:zipcode] %>
+
+  <%= label_tag :radius, 'Search radius (miles):' %>
+  <%= number_field_tag :radius, params[:radius], min: 1, max: 50 %>
+
   <%= submit_tag 'Search' %>
 <% end %>

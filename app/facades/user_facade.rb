@@ -1,7 +1,6 @@
 class UserFacade
   def all_users
     json = service.user_index
-
     @users = json[:data].map { |details| User.new(details[:attributes]) }
   end
 
