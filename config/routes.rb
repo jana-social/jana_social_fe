@@ -9,4 +9,6 @@ Rails.application.routes.draw do
       resources :events, only: [:index]
     end
   end
+
+  resources :users, only: %i[show], as: :dashboard
 end
