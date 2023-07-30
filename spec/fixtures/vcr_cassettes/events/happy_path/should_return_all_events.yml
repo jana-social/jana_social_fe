@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://jana-social-be.onrender.com/api/v1/events
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Date:
+      - Sun, 30 Jul 2023 00:23:06 GMT
+      Content-Type:
+      - text/html; charset=UTF-8
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 7ee973783866290f-DEN
+      Cf-Cache-Status:
+      - DYNAMIC
+      Vary:
+      - Accept-Encoding
+      X-Render-Origin-Server:
+      - Render
+      X-Request-Id:
+      - ccbb763c-cbcc-4177-a8d0-75838bf4924d
+      X-Runtime:
+      - '0.008433'
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+  recorded_at: Sun, 30 Jul 2023 00:23:06 GMT
+recorded_with: VCR 6.2.0
