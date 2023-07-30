@@ -17,6 +17,5 @@ class Event
     @date_time = data[:attributes][:date_time]
     @private_status = data[:attributes][:private_status]
     @host = data[:attributes][:host]
-
   end
 end
