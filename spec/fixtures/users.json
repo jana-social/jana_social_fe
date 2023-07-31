@@ -15,6 +15,7 @@
         "latitude":"40.712776",
         "longitude":"-74.005974"
       }
+
     },
     {"id":"2",
     "type":"user",
@@ -28,9 +29,10 @@
         "likes":"consectetur adipiscing elit",
         "dislikes":"sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
         "profile_image_link":"https://images.unsplash.com/photo-1543807535-eceef0bc6599?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-        "latitude":"-122.3951096",
-        "longitude":"37.7941013"
+        "latitude":"37.7941013",
+        "longitude":"-122.3951096"
       }
     }
   ]
 }
+
