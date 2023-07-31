@@ -1,0 +1,59 @@
+<!-- app/views/api/v1/events/index.html.erb -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Your head content -->
+  </head>
+  <body id="page-top">
+    <header class="masthead bg-primary text-white text-center">
+      <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading mb-0">Jana Social</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+      </div>
+    </header>
+    <section class="page-section portfolio" id="portfolio">
+      <div class="container">
+        <!-- Portfolio Section Heading-->
+        <div class="text-center">
+          <h2 class="page-section-heading text-secondary mb-0 d-inline-block">Login</h2>
+        </div>
+        <!-- Icon Divider-->
+        <!-- Log in User-->
+        <div class="divider-custom">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <!-- Portfolio Grid Items-->
+        <div class="row justify-content-center">
+          <!-- Portfolio Items-->
+          <div>
+            <h1>All Events</h1>
+            <ul>
+              <% @facade.each_with_index do |event, index| %>
+                <li id="event-<%= index + 1 %>">
+                  <strong>Title: </strong><%= event.title %><br>
+                  Description: <%= event.description %><br>
+                  Street Address: <%= event.street_address %><br>
+                  Zipcode: <%= event.zipcode %><br>
+                  Date Time: <%= event.date_time %><br>
+                  Private Status: <%= event.private_status %><br>
+                  Host: <%= event.host %><br>
+                </li>
+                <hr>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   get "dashboard", to: "search#dashboard", as: :search_dashboard
   get "user_search", to: "search#user_search", as: :user_search
   get "search_results", to: "search#search_results", as: :search_results
+
+  resources :events, only: [:index]
+
 end
