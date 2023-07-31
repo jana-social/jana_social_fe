@@ -17,7 +17,7 @@ class RenderService
   end
 
   def create_event(user_id, params)
-    post_url("/api/v1/users/#{user_id}/events", { title: params[:title], description: params[:description], street_address: "#{params[:street_address]}, #{params[:city]}, #{params[:state]}", zipcode: params[:zipcode], date_time: params[:date_time], private: params[:private] })
+    post_url("/api/v1/users/#{user_id}/events", { title: params[:title], description: params[:description], street_address: "#{params[:street_address]}, #{params[:city]}, #{params[:state]}", zipcode: params[:zipcode], date_time: params[:date_time], private_status: params[:private] })
   end
 
   def get_url(url)
