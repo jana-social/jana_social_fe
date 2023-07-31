@@ -1,4 +1,4 @@
-class Search::Users < ApplicationController
+class Search::UsersController < ApplicationController
 
   def show
   end
