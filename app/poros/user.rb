@@ -10,6 +10,7 @@ class User
               :photo_url
 
   def initialize(data)
+    require 'pry'; binding.pry
     @id             = data[:id]
     @username       = data[:attributes][:username]
     @email          = data[:attributes][:email]
