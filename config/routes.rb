@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "application#welcome"
+  post "/login", to: "sessions#create"
 
-
+  resources :dashboard
   resources :events, only: [:index]
 
 end

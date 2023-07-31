@@ -11,14 +11,18 @@ class RenderService
     get_url("/api/v1/users/#{user_id}")
   end
 
+  def search_by_email_and_password(email, password)
+    get_url("/api/v1/search/?q=#{email}&p=#{password}")
+  end
+
   def get_url(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
   end
 
   def conn
-    Faraday.new(url: "https://jana-social-be.onrender.com")
-    # Faraday.new(url: "https://localhost:3000")
+    # Faraday.new(url: "https://jana-social-be.onrender.com")
+    Faraday.new(url: "https://localhost:3000")
     # change to https://localhost:3000 for local testing if needed
   end
 end
