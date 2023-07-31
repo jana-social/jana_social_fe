@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :search do
     resources :users, only: %i[show]
   end
-  
+
   get "dashboard", to: "search#dashboard", as: :search_dashboard
   get "find_friends", to: "search#find_friends", as: :find_friends
   get "search_results", to: "search#search_results", as: :search_results
@@ -19,5 +19,5 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#login_form'
   post '/login', to: 'sessions#login'
-  get '/exit', to: 'sessions#logout', as: :logout
+  get '/logout', to: 'sessions#logout', as: :logout
 end
