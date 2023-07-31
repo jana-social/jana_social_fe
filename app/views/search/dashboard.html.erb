@@ -1,0 +1,36 @@
+<%= "Find Friends" %>
+
+<html>
+<head>
+  <title>Static Map</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* Ensure the body takes up the full height of the viewport */
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    /* Add any other styling you need for the map and the form */
+  </style>
+</head>
+<body>
+
+  <img src="https://www.mapquestapi.com/staticmap/v5/map?key=<%= Figaro.env.MAPQUEST_API_KEY %>&center=Denverk&size=400,300@2x" alt="Static Map">
+
+  <%= form_tag user_search_path, method: :get do %>
+    <%= label_tag :zipcode, 'Enter your zipcode:' %>
+    <%= text_field_tag :zipcode, params[:zipcode] %>
+
+    <%= label_tag :radius, 'Search radius (miles):' %>
+    <%= number_field_tag :radius, params[:radius], min: 1, max: 50 %>
+
+    <%= submit_tag 'Search' %>
+  <% end %>
+</body>
+</html>

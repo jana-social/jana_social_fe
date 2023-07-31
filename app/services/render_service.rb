@@ -8,6 +8,11 @@ class RenderService
     get_url("/api/v1/users")
   end
 
+  def user_search(zipcode, radius)
+    # need to make the correct call
+    get_url("/api/v1/users/searach")
+  end
+
   def user_show(user_id)
     get_url("/api/v1/users/#{user_id}")
   end
@@ -17,7 +22,7 @@ class RenderService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def conn 
+  def conn
     Faraday.new(url: 'https://jana-social-be.onrender.com/')
   end
 end

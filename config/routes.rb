@@ -4,14 +4,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "application#welcome"
 
-  namespace :api do
-    namespace :v1 do
-      resources :events, only: [:index]
-      resources :search, only: [:index, :create]
-      namespace :search do
-        resources :users, only: [:show]
-      end
-      get "dashboard", to: "search#dashboard", as: :search_dashboard
-    end
+  resources :events, only: %i[index]
+  resources :search, only: %i[index create]
+  namespace :search do
+    resources :users, only: %i[show]
   end
+  get "dashboard", to: "search#dashboard", as: :search_dashboard
+  get "user_search", to: "search#user_search", as: :user_search
+  get "search_results", to: "search#search_results", as: :search_results
 end
