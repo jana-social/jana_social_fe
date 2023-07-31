@@ -6,4 +6,10 @@ class EventsFacade
       Event.new(event_data)
     end
   end
+
+  def get_one_event(event_id)
+    service = RenderService.new
+    request = service.get_one_event(event_id)
+    Event.new(request[:data])
+  end
 end

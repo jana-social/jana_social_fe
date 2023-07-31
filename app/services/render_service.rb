@@ -11,6 +11,10 @@ class RenderService
     get_url("/api/v1/users/#{user_id}")
   end
 
+  def get_one_event(event_id)
+    get_url("/api/v1/events/#{event_id}")
+  end
+
   def get_url(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)

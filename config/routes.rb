@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   root "application#welcome"
 
 
-  resources :events, only: [:index]
+  resources :events, only: [:index, :show]
 
 end
