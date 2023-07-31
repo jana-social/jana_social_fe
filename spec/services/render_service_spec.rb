@@ -50,10 +50,10 @@ RSpec.describe RenderService do
         expect(attributes[:profile_image_link]).to be_a(String)
 
         expect(attributes).to have_key(:latitude)
-        expect(attributes[:latitude]).to be_a(String)
+        expect(attributes[:latitude]).to be_a(Float)
 
         expect(attributes).to have_key(:longitude)
-        expect(attributes[:longitude]).to be_a(String)
+        expect(attributes[:longitude]).to be_a(Float)
       end
     end
   end
