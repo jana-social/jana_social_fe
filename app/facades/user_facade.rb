@@ -22,6 +22,11 @@ class UserFacade
 
   end
 
+  def searched_users(zipcode, radius)
+    json = service.user_search(zipcode, radius)
+    @users = json[:data].map { |details| UserSearch.new(details[:attributes]) }
+  end
+
   private
 
   def service
