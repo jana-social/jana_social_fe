@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "application#welcome"
 
-
   resources :events, only: [:index]
 
   resources :users, only: %i[show], as: :dashboard

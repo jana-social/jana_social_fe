@@ -22,7 +22,7 @@ class RenderService
 
   def conn
     # Faraday.new(url: 'https://jana-social-be.onrender.com/')
-    Faraday.new(url: "https://localhost:3000")
-    # change to https://localhost:3000 for local testing if needed
+    Faraday.new(url: "http://localhost:3000")
+    # change to http://localhost:3000 for local testing if needed
   end
 end
