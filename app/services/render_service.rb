@@ -7,10 +7,10 @@ class RenderService
     get_url("/api/v1/users")
   end
 
-  def user_search(zipcode, radius)
-    # need to make the correct call
-    get_url("/api/v1/users/search")
-  end
+  # def user_search(zipcode, radius)
+  #   # need to make the correct call
+  #   get_url("/api/v1/users/search")
+  # end
 
   def user_show(user_id)
     get_url("/api/v1/users/#{user_id}")
