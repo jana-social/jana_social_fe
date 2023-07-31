@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "application#welcome"
+
+  resources :users do
+    resources :events, only: %i[create new]
+  end
   resources :events, only: %i[index]
   resources :search, only: %i[index create]
   namespace :search do
