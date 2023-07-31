@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[show]
   end
   get "dashboard", to: "search#dashboard", as: :search_dashboard
-  get "user_search", to: "search#user_search", as: :user_search
+  get "find_friends", to: "search#find_friends", as: :find_friends
   get "search_results", to: "search#search_results", as: :search_results
 
   resources :events, only: [:index]

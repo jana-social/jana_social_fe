@@ -9,7 +9,7 @@ class RenderService
 
   def user_search(zipcode, radius)
     # need to make the correct call
-    get_url("/api/v1/users/searach")
+    get_url("/api/v1/users/search")
   end
 
   def user_show(user_id)

@@ -7,7 +7,7 @@ class SearchController < ApplicationController
 
   end
 
-  def user_search
+  def find_friends
     redirect_to search_results_path
   end
 
