@@ -2,6 +2,7 @@ require 'simplecov'
   SimpleCov.start
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'webmock/rspec'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
@@ -32,6 +33,13 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  config.before(:each) do
+    # Stub the API call to the backend app
+    url = 'https://backend-app-url.com/users'
+    response_body = '[{"name": "John Doe", "location": "New York, NY"}, {"name": "Jane Smith", "location": "San Francisco, CA"}]'
+    stub_request(:get, url).to_return(status: 200, body: response_body)
+  end
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
