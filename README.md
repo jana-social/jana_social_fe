@@ -27,7 +27,7 @@
 <h3> Location/Friends Team </h3>
 
  - Myles Nottingham: [GitHub](https://github.com/MylesNottingham) | [LinkedIn](https://www.linkedin.com/in/mylesnottingham/)
- - Blaine Glasgow: [GitHub](https://github.com/GlowMunch) | LinkedIn
+ - Blaine Glasgow: [GitHub](https://github.com/GlowMunch) | [LinkedIn](https://www.linkedin.com/in/blaine-glasgow-134a9017a/)
  - Amy Spears: [GitHub](https://github.com/Amspears007) | [LinkedIn](https://www.linkedin.com/in/amy-marie-spears-900997105/)
  - Steven Stackhouse: [GitHub](https://github.com/stackmm) | [LinkedIn](https://www.linkedin.com/in/steven-stackhouse/)
 
@@ -39,7 +39,7 @@ This endpoint will return all users within the specific distance input radius
     Data Format: An array of user hash objects with keys "id", "type" and "attributes".
 
   Status: 200 OK
-
+```json
 {
   "data": [
     {
@@ -70,12 +70,12 @@ This endpoint will return all users within the specific distance input radius
     }
   ]
 }
-
+```
 // a get request with :zipcode and :radius
 
 // I should get back an array of user objects
 // with this information attatched
-
+```json
 {"data":
   [
     {"id":"1",
@@ -89,4 +89,4 @@ This endpoint will return all users within the specific distance input radius
         "profile_image_link":"https://images.unsplash.com/photo-1543807535-eceef0bc6599?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
       }
     },
-
+```
