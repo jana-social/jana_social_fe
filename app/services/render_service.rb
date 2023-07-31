@@ -12,6 +12,10 @@ class RenderService
     get_url("/api/v1/users/#{user_id}")
   end
 
+  def authenticate_with(email, password)
+    get_url("/api/v1/search/?q=#{email}&p=#{password}")
+  end
+
   def get_url(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)

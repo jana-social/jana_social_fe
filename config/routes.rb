@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[show], as: :dashboard
+
+  get '/login', to: 'sessions#login_form'
+  post '/login', to: 'sessions#login'
+  get '/exit', to: 'sessions#logout', as: :logout
 end

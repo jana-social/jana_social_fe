@@ -11,8 +11,8 @@ class UserFacade
     @user = User.new(json[:data])
   end
 
-  def find_by_email(email)
-    json = service.user_email_search(email)
+  def authenticate(email, password)
+    json = service.authenticate_with(email, password)
 
     @user = User.new(json[:data])
   end
