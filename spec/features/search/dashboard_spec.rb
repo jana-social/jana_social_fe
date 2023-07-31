@@ -36,7 +36,6 @@ RSpec.describe "Search" do
 
       expect(page).to have_content("Username")
       expect(page).to have_content("Likes")
-      save_and_open_page
     end
   end
 end

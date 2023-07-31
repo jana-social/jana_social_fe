@@ -16,6 +16,10 @@ class RenderService
     get_url("/api/v1/users/#{user_id}")
   end
 
+  def authenticate_with(email, password)
+    get_url("/api/v1/search?q=#{email}&p=#{password}")
+  end
+
   def create_event(user_id, params)
     post_url("/api/v1/users/#{user_id}/events", { title: params[:title], description: params[:description], street_address: "#{params[:street_address]}, #{params[:city]}, #{params[:state]}", zipcode: params[:zipcode], date_time: params[:date_time], private_status: params[:private] })
   end
@@ -30,8 +34,9 @@ class RenderService
   end
 
   def conn
-    Faraday.new(url: "https://jana-social-be.onrender.com/")
+    ## Alway comment this in before pushing to production
+    Faraday.new(url: 'https://jana-social-be.onrender.com/')
     # Faraday.new(url: "http://localhost:3000")
-    # change to https://localhost:3000 for local testing if needed
+    # change to http://localhost:3000 for local testing if needed
   end
 end
