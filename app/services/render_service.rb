@@ -1,5 +1,4 @@
 class RenderService
-
   def get_all_events
     get_url("/api/v1/events")
   end
@@ -22,7 +21,8 @@ class RenderService
   end
 
   def conn
-    Faraday.new(url: 'http://localhost:3000/')
     # Faraday.new(url: 'https://jana-social-be.onrender.com/')
+    Faraday.new(url: "https://localhost:3000")
+    # change to https://localhost:3000 for local testing if needed
   end
 end
