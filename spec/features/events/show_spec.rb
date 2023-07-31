@@ -19,7 +19,7 @@ RSpec.describe 'Get one event', type: :feature do
     # click_button "Login"
     # visit events_path
     visit '/events/1'
-
+save_and_open_page
     expect(page).to have_content("Casey's Sweet Quiet Gathering")
     expect(page).to have_content("Movie for people with noise sensitivities")
     expect(page).to have_content("5479 William Way, East Sonnyhaven, LA")

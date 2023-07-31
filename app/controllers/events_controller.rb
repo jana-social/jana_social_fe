@@ -5,6 +5,7 @@ class EventsController < ApplicationController
 
   def show
     @event = EventsFacade.new.get_one_event(params[:id])
-    require 'pry'; binding.pry
   end
+
+
 end

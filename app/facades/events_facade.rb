@@ -10,6 +10,8 @@ class EventsFacade
   def get_one_event(event_id)
     service = RenderService.new
     request = service.get_one_event(event_id)
-    Event.new(request[:data])
+    request[:data].map do |event_data|
+      Event.new(event_data)
+    end
   end
 end
