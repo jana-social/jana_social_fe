@@ -17,6 +17,7 @@ RSpec.describe UserFacade do
           expect(result.bio).to be_a(String)
           expect(result.dislikes).to be_a(String)
           expect(result.email).to be_a(String)
+          expect(result.id).to be_a(String)
           expect(result.likes).to be_a(String)
           expect(result.photo_url).to be_a(String)
           expect(result.street_address).to be_a(String)

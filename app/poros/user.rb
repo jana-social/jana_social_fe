@@ -6,16 +6,18 @@ class User
               :bio,
               :likes,
               :dislikes,
+              :id,
               :photo_url
 
   def initialize(data)
-    @username       = data[:username]
-    @email          = data[:email]
-    @zipcode        = data[:zipcode]
-    @street_address = data[:street_address]
-    @bio            = data[:bio]
-    @likes          = data[:likes]
-    @dislikes       = data[:dislikes]
-    @photo_url      = data[:profile_image_link]
+    @id             = data[:id]
+    @username       = data[:attributes][:username]
+    @email          = data[:attributes][:email]
+    @zipcode        = data[:attributes][:zipcode]
+    @street_address = data[:attributes][:street_address]
+    @bio            = data[:attributes][:bio]
+    @likes          = data[:attributes][:likes]
+    @dislikes       = data[:attributes][:dislikes]
+    @photo_url      = data[:attributes][:profile_image_link]
   end
 end
