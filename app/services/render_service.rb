@@ -16,17 +16,20 @@ class RenderService
     get_url("/api/v1/users/#{user_id}")
   end
 
-<<<<<<< HEAD
   def get_one_event(event_id)
     get_url("/api/v1/events/#{event_id}")
-=======
+  end
+
   def authenticate_with(email, password)
     get_url("/api/v1/search?q=#{email}&p=#{password}")
   end
 
+  def update_user_events(user_id, event_id)
+    post_url("/api/v1/users/#{user_id}/events/#{event_id}")
+  end
+
   def create_event(user_id, params)
     post_url("/api/v1/users/#{user_id}/events", { title: params[:title], description: params[:description], street_address: "#{params[:street_address]}, #{params[:city]}, #{params[:state]}", zipcode: params[:zipcode], date_time: params[:date_time], private_status: params[:private] })
->>>>>>> e4b91dd6b27264d123bbb7cfbd15f9281348bfd0
   end
 
   def get_url(url)

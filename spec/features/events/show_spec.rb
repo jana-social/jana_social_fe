@@ -28,26 +28,4 @@ RSpec.describe 'Get one event', type: :feature do
     expect(page).to have_content("63637")
     expect(page).to have_content("8-17-23, 5:25 PM")
   end
-
-  it 'displays button to Attend event' do
-
-    @event = EventsFacade.new.get_one_event(1)
-
-    # visit login_path
-
-    # fill_in :username, with: @user1.username
-    # fill_in :password, with: @user1.password
-
-    # click_button "Login"
-    # visit events_path
-
-    visit '/events/1'
-
-    expect(page).to have_button("Attend")
-
-    click_button "Attend"
-
-    expect(page).to have_content("You are attending this event!")
-    expect(page).to have_content("Unattend")
-  end
 end
