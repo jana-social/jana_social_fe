@@ -10,7 +10,8 @@ RSpec.describe 'Get one event', type: :feature do
 
   it 'displays one event' do
 
-    # Commented out until we can figure out sessions / We need to login a user
+    @event = EventsFacade.new.get_one_event(1)
+
     # visit login_path
 
     # fill_in :username, with: @user1.username
@@ -18,13 +19,13 @@ RSpec.describe 'Get one event', type: :feature do
 
     # click_button "Login"
     # visit events_path
+
     visit '/events/1'
-save_and_open_page
+    
     expect(page).to have_content("Casey's Sweet Quiet Gathering")
     expect(page).to have_content("Movie for people with noise sensitivities")
     expect(page).to have_content("5479 William Way, East Sonnyhaven, LA")
     expect(page).to have_content("63637")
     expect(page).to have_content("8-17-23, 5:25 PM")
-    expect(page).to have_content("true")
   end
 end

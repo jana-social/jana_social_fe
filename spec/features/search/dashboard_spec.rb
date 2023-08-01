@@ -22,9 +22,9 @@ RSpec.describe "Search" do
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/search").
       with(
         headers: {
-       'Accept'=>'*/*',
-       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       'User-Agent'=>'Faraday v2.7.10'
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'User-Agent'=>'Faraday v2.7.10'
         }).
       to_return(status: 200, body: json_response, headers: {})
 
@@ -36,7 +36,6 @@ RSpec.describe "Search" do
 
       expect(page).to have_content("Username")
       expect(page).to have_content("Likes")
-      save_and_open_page
     end
   end
 end
