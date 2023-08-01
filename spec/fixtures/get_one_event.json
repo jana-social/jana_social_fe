@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "type": "event_show",
+      "attributes": {
+        "title": "Casey's Sweet Quiet Gathering",
+        "description": "Movie for people with noise sensitivities",
+        "street_address": "5479 William Way, East Sonnyhaven, LA",
+        "zipcode": "63637",
+        "date_time": "8-17-23, 5:25 PM",
+        "private_status": "true",
+        "host": "1"
+      }
+    }
+  ]  
+}
