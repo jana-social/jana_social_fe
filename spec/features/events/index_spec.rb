@@ -4,10 +4,22 @@ RSpec.describe "Get all events" do
   describe "happy path" do
     before(:each) do
       json_response = File.read("spec/fixtures/get_all_events.json")
-      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/events")
+      stub_request(:get, "http://localhost:3000/api/v1/events")
         .to_return(status: 200, body: json_response)
+      user_id = 1
+      json_response_hosting = File.read("spec/fixtures/get_hosting_events.json")
+      json_response_attending = File.read("spec/fixtures/get_attending_events.json")
+      json_response_user = File.read("spec/fixtures/user.json")
 
-      # Commented out until we can figure out sessions / We need to login a user
+      # stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}/events/hosting")
+      # .to_return(status: 200, body: json_response_hosting)
+
+      # stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}/events/attending")
+      # .to_return(status: 200, body: json_response_attending)
+
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}")
+      .to_return(status: 200, body: json_response_user)
+        # Commented out until we can figure out sessions / We need to login a user
       # visit login_path
 
       # fill_in :username, with: @user1.username
@@ -44,6 +56,7 @@ RSpec.describe "Get all events" do
         expect(page).to have_content("Private Status: false")
         expect(page).to have_content("Host: 6")
       end
+      save_and_open_page
     end
 
     xit "displays links to each event" do
