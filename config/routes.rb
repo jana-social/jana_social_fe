@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout', as: :logout
   get '/oauth', to: 'goog_sesh#login'
+  get '/callback', to: 'goog_sesh#callback'
 end
