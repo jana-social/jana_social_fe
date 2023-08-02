@@ -1,8 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "/dashboard", type: :feature do
-  context 'happy path' do
-    it 'will display user dashboard' do
+  context "happy path" do
+    it "will display user dashboard" do
       json_response = File.read("spec/fixtures/user.json")
       authenticated_user = File.read("spec/fixtures/authenticated_user.json")
 
@@ -23,12 +23,12 @@ RSpec.describe "/dashboard", type: :feature do
       click_on "Log In"
       visit dashboard_path(user.id)
 
-      expect(page).to have_content("#{user.username.to_s}'s Dashboard")
-      expect(page).to have_content("Username: #{user.username.to_s}")
-      expect(page).to have_content("Zipcode: #{user.zipcode.to_s}")
-      expect(page).to have_content("Bio: #{user.bio.to_s}")
-      expect(page).to have_content("What I like: #{user.likes.to_s}")
-      expect(page).to have_content("What I try to stay away from: #{user.dislikes.to_s}")
+      expect(page).to have_content("#{user.username}'s Dashboard")
+      expect(page).to have_content("Username: #{user.username}")
+      expect(page).to have_content("Zipcode: #{user.zipcode}")
+      expect(page).to have_content("Bio: #{user.bio}")
+      expect(page).to have_content("What I like: #{user.likes}")
+      expect(page).to have_content("What I try to stay away from: #{user.dislikes}")
       expect(page).to have_content("Profile Picture:")
       expect(page).to have_link("My Messages", href: user_rooms_path(user.id))
       expect(page).to have_link("Discover New Events", href: events_path)

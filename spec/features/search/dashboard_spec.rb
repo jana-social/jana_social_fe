@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe "Search" do
   describe "Search Dashbaord" do
     before :each do
-
       json_response = File.read("spec/fixtures/user.json")
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1")
         .to_return(status: 200, body: json_response)
@@ -19,14 +18,15 @@ RSpec.describe "Search" do
 
     it "entering your zipcode and a search radius returns users within give search distance" do
       json_response = File.read("spec/fixtures/user_search_response.json")
-      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/search").
-      with(
-        headers: {
-       'Accept'=>'*/*',
-       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       'User-Agent'=>'Faraday v2.7.10'
-        }).
-      to_return(status: 200, body: json_response, headers: {})
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/search")
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+            "User-Agent" => "Faraday v2.7.10"
+          }
+        )
+        .to_return(status: 200, body: json_response, headers: {})
 
       fill_in "zipcode", with: "80301"
       fill_in "Search radius (miles)", with: "50"

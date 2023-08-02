@@ -17,7 +17,6 @@ RSpec.describe "Get all events" do
       # visit events_path
     end
     it "should return all events" do
-
       visit events_path
       expect(current_path).to eq(events_path)
 
@@ -47,23 +46,19 @@ RSpec.describe "Get all events" do
     end
 
     xit "displays links to each event" do
-
       # Create Event to click on
-      click_link("#{@event1.title}")
+      click_link(@event1.title.to_s)
       expect(current_path).to eq(event_path(@event1.id))
     end
 
     xit "displays link to User Dashboard" do
-
       click_link("User Dashboard")
       expect(current_path).to eq(login_path)
     end
 
     xit "displays link to Create Event" do
-
       click_link("Create Event")
       expect(current_path).to eq(new_event_path)
     end
   end
 end
-
