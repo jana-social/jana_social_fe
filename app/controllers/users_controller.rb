@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def show
-    #need to add sessions controller for login info - how to authenticate?
-    @user = UserFacade.new.find_user(params[:id])
+    @user = UserFacade.new.find_user(current_user)
   end
 end
