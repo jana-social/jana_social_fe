@@ -14,12 +14,7 @@ class UserFacade
   def authenticate(email, password)
     json = service.authenticate_with(email, password)
 
-    if json.has_key?(:data)
-      @user = User.new(json[:data])
-    else
-      @user = nil
-    end
-
+    @user = (User.new(json[:data]) if json.key?(:data))
   end
 
   def searched_users(zipcode, radius)

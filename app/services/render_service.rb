@@ -20,6 +20,14 @@ class RenderService
     get_url("/api/v1/events/#{event_id}")
   end
 
+  def get_hosting_events(user_id)
+    get_url("/api/v1/users/#{user_id}/events/hosting")
+  end
+
+  def get_attending_events(user_id)
+    get_url("/api/v1/users/#{user_id}/events/attending")
+  end
+
   def authenticate_with(email, password)
     get_url("/api/v1/search?q=#{email}&p=#{password}")
   end
@@ -43,7 +51,7 @@ class RenderService
 
   def conn
     ## Alway comment this in before pushing to production
-    Faraday.new(url: 'https://jana-social-be.onrender.com/', request: { timeout: 300 })
+    Faraday.new(url: "https://jana-social-be.onrender.com")
     # Faraday.new(url: "http://localhost:3000")
     # change to http://localhost:3000 for local testing if needed
   end
