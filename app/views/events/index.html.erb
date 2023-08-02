@@ -23,7 +23,7 @@
       <div class="container">
         <!-- Portfolio Section Heading-->
         <div class="text-center">
-          <h2 class="page-section-heading text-secondary mb-0 d-inline-block">Login</h2>
+          <h2 class="page-section-heading text-secondary mb-0 d-inline-block">All Events</h2>
         </div>
         <!-- Icon Divider-->
         <!-- Log in User-->
@@ -36,21 +36,27 @@
         <div class="row justify-content-center">
           <!-- Portfolio Items-->
           <div>
-            <h1>All Events</h1>
-            <ul>
-              <% @facade.each_with_index do |event, index| %>
-                <li id="event-<%= index + 1 %>">
-                  <strong>Title: </strong><%= event.title %><br>
-                  Description: <%= event.description %><br>
-                  Street Address: <%= event.street_address %><br>
-                  Zipcode: <%= event.zipcode %><br>
-                  Date Time: <%= event.date_time %><br>
-                  Private Status: <%= event.private_status %><br>
-                  Host: <%= event.host %><br>
-                </li>
-                <hr>
-              <% end %>
-            </ul>
+            <% if @facade.present? %>
+              <ul>
+                <% @facade.each_with_index do |event, index| %>
+                  <li id="event-<%= index + 1 %>">
+                    <strong>Title: <%= link_to event.title, event_path(event.id) %></strong><br>
+                    Description: <%= event.description %><br>
+                    Street Address: <%= event.street_address %><br>
+                    Zipcode: <%= event.zipcode %><br>
+                    Date/Time: <%= event.date_time %><br>
+                    <!-- Date Time:  Time.zone.parse(event.date_time).strftime('%B %e, %Y, %l:%M%P')<br> -->
+                    <!--Date will look correct in saop but not in server -->
+                    Private Status: <%= event.private_status %><br>
+                    Host: <%= event.host %><br>
+                    <!-- Needs host name, not ID %> -->
+                  </li>
+                  <hr>
+                <% end %>
+              </ul>
+            <% else %>
+              <h3>There are no events to display</h3>
+            <% end %>
           </div>
         </div>
       </div>
