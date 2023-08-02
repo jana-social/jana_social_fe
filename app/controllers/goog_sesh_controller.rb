@@ -5,7 +5,7 @@ class GoogSeshController < ApplicationController
   end
 
   def callback
-    client = Signet::OAuth2::Client.new(client_options)
+    client = Signet::OAuth2::Client.new(client_params)
     client.code = params[:code]
 
     response = client.fetch_access_token!
