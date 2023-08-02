@@ -105,4 +105,106 @@ RSpec.describe RenderService do
       end
     end
   end
+
+  describe "#get_hosting_events" do
+    it "returns all hosting events" do
+      json_response = File.read("spec/fixtures/get_hosting_events.json")
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1/events/hosting")
+        .to_return(status: 200, body: json_response)
+
+      results = RenderService.new.get_hosting_events(1)
+      expect(results).to be_a(Hash)
+
+      events = results[:data]
+      expect(events).to be_an(Array)
+
+      events.each do |event|
+        expect(event).to have_key(:id)
+        expect(event[:id]).to be_a(String)
+
+        expect(event).to have_key(:type)
+        expect(event[:type]).to be_a(String)
+
+        expect(event).to have_key(:attributes)
+        expect(event[:attributes]).to be_a(Hash)
+
+        attributes = event[:attributes]
+
+        expect(attributes).to have_key(:title)
+        expect(attributes[:title]).to be_a(String)
+
+        expect(attributes).to have_key(:description)
+        expect(attributes[:description]).to be_a(String)
+
+        expect(attributes).to have_key(:street_address)
+        expect(attributes[:street_address]).to be_a(String)
+
+        expect(attributes).to have_key(:zipcode)
+        expect(attributes[:zipcode]).to be_a(String)
+
+        expect(attributes).to have_key(:date_time)
+        expect(attributes[:date_time]).to be_a(String)
+
+        expect(attributes).to have_key(:private)
+        expect(attributes[:private]).to be_in([true, false])# change to boolean
+
+        expect(attributes).to have_key(:host)
+        expect(attributes[:host]).to be_a(String)
+
+        expect(attributes).to have_key(:user_id)
+        expect(attributes[:user_id]).to be_a(Integer)
+      end
+    end
+  end
+
+  describe "#get_attending_events" do
+    it "returns all hosting events" do
+      json_response = File.read("spec/fixtures/get_attending_events.json")
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1/events/attending")
+        .to_return(status: 200, body: json_response)
+
+      results = RenderService.new.get_attending_events(1)
+      expect(results).to be_a(Hash)
+
+      events = results[:data]
+      expect(events).to be_an(Array)
+
+      events.each do |event|
+        expect(event).to have_key(:id)
+        expect(event[:id]).to be_a(String)
+
+        expect(event).to have_key(:type)
+        expect(event[:type]).to be_a(String)
+
+        expect(event).to have_key(:attributes)
+        expect(event[:attributes]).to be_a(Hash)
+
+        attributes = event[:attributes]
+
+        expect(attributes).to have_key(:title)
+        expect(attributes[:title]).to be_a(String)
+
+        expect(attributes).to have_key(:description)
+        expect(attributes[:description]).to be_a(String)
+
+        expect(attributes).to have_key(:street_address)
+        expect(attributes[:street_address]).to be_a(String)
+
+        expect(attributes).to have_key(:zipcode)
+        expect(attributes[:zipcode]).to be_a(String)
+
+        expect(attributes).to have_key(:date_time)
+        expect(attributes[:date_time]).to be_a(String)
+
+        expect(attributes).to have_key(:private)
+        expect(attributes[:private]).to be_in([true, false])# change to boolean
+
+        expect(attributes).to have_key(:host)
+        expect(attributes[:host]).to be_a(String)
+
+        expect(attributes).to have_key(:user_id)
+        expect(attributes[:user_id]).to be_a(Integer)
+      end
+    end
+  end
 end

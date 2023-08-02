@@ -25,7 +25,5 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login_form'
   post '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout', as: :logout
-
-  # get "/users/:id/events/oauth", to: "events#oauth", as: :oauth
-
+  get '/oauth', to: 'goog_sesh#login'
 end
