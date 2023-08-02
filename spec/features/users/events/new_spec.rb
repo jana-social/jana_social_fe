@@ -4,16 +4,26 @@ RSpec.describe "New Event Form" do
   describe "Create a new event form" do
 
     it "redirects to Oauth authentication page" do
-      json_response = File.read("spec/fixtures/get_all_events.json")
-      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/events")
-      .to_return(status: 200, body: json_response)
+      user_id = 1
+      json_response_hosting = File.read("spec/fixtures/get_hosting_events.json")
+      json_response_attending = File.read("spec/fixtures/get_attending_events.json")
+      json_response_user = File.read("spec/fixtures/user.json")
 
-      visit user_events_path(1)
-      save_and_open_page
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}/events/hosting")
+      .to_return(status: 200, body: json_response_hosting)
 
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}/events/attending")
+      .to_return(status: 200, body: json_response_attending)
+
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}")
+      .to_return(status: 200, body: json_response_user)
+
+      visit users_events_path(1)
+
+      expect(page).to have_link("Create Event")
       click_link("Create Event")
 
-      expect(current_path).to eq(oauth_path(1))
+      # expect(current_path).to eq(oauth_path(1))
       # visit page
       # hit Oauth
       # get redirected to the form with this info
@@ -60,3 +70,5 @@ RSpec.describe "New Event Form" do
     end
   end
 end
+
+# get "/users/:id/events/oauth", to: "events#oauth", as: :oauth

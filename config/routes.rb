@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  
+
   root "application#welcome"
 
-  resources :users do
-    resources :events, only: %i[index show create new]
-    resources :rooms
-    resources :friends, only: %i[index]
+  namespace :users do
+      resources :events, only: %i[index show create new]
+      resources :rooms
+      resources :friends, only: %i[index]
   end
 
   resources :events, only: %i[index show]
@@ -27,4 +27,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login_form'
   post '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout', as: :logout
+
+  # get "/users/:id/events/oauth", to: "events#oauth", as: :oauth
+
 end
