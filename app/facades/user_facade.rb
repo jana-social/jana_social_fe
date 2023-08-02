@@ -22,6 +22,10 @@ class UserFacade
     @users = json[:data].map { |details| UserSearch.new(details[:attributes]) }
   end
 
+  def create_user(user_params)
+    require 'pry'; binding.pry
+  end
+
   private
 
   def service
