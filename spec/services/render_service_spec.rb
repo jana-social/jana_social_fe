@@ -207,4 +207,55 @@ RSpec.describe RenderService do
       end
     end
   end
+
+  describe "#update_user_events" do
+  it "PATCHes a specific user's event" do
+    json_response = File.read("spec/fixtures/update_event_user.json")
+    stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1/events/attending")
+      .to_return(status: 200, body: json_response)
+
+    results = RenderService.new.update_event_user(1)
+    expect(results).to be_a(Hash)
+
+    events = results[:data]
+    expect(events).to be_an(Array)
+
+    events.each do |event|
+      expect(event).to have_key(:id)
+      expect(event[:id]).to be_a(String)
+
+      expect(event).to have_key(:type)
+      expect(event[:type]).to be_a(String)
+
+      expect(event).to have_key(:attributes)
+      expect(event[:attributes]).to be_a(Hash)
+
+      attributes = event[:attributes]
+
+      expect(attributes).to have_key(:title)
+      expect(attributes[:title]).to be_a(String)
+
+      expect(attributes).to have_key(:description)
+      expect(attributes[:description]).to be_a(String)
+
+      expect(attributes).to have_key(:street_address)
+      expect(attributes[:street_address]).to be_a(String)
+
+      expect(attributes).to have_key(:zipcode)
+      expect(attributes[:zipcode]).to be_a(String)
+
+      expect(attributes).to have_key(:date_time)
+      expect(attributes[:date_time]).to be_a(String)
+
+      expect(attributes).to have_key(:private)
+      expect(attributes[:private]).to be_in([true, false])# change to boolean
+
+      expect(attributes).to have_key(:host)
+      expect(attributes[:host]).to be_a(String)
+
+      expect(attributes).to have_key(:user_id)
+      expect(attributes[:user_id]).to be_a(Integer)
+    end
+  end
+end
 end

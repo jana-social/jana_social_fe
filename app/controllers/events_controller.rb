@@ -8,7 +8,6 @@ class EventsController < ApplicationController
   end
 
 
-
   def new
     @user = params[:user_id]
   end
