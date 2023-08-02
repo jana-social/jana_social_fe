@@ -1,6 +1,6 @@
 <h1>Upload New Photo</h1>
 
-<%= form_tag "/users/#{@user.id}", method: :patch, enctype: 'multipart/form-data' do %>
+<%= form_tag "/users/#{@user.id}/update_photo", method: :patch, enctype: 'multipart/form-data' do %>
  <%= file_field_tag :file  %>
   <br>
   <br>

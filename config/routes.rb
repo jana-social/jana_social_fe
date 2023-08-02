@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get "/users/:id/photos/edit", to: "users/photos#edit", as: :user_photo_edit
   patch "/users/:id/photos", to: "users/photos#update", as: :update_photo
 
+  patch "/users/:id/update_photo", to: "users#update_photo" 
+
   resources :events, only: %i[index show]
 
   resources :search, only: %i[index create]
