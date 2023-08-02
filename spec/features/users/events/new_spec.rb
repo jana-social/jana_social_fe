@@ -18,16 +18,9 @@ RSpec.describe "New Event Form" do
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}")
       .to_return(status: 200, body: json_response_user)
 
-      visit users_events_path(1)
+      visit user_events_path(1)
 
       expect(page).to have_link("Create Event")
-      click_link("Create Event")
-
-      # expect(current_path).to eq(oauth_path(1))
-      # visit page
-      # hit Oauth
-      # get redirected to the form with this info
-
     end
 
 
@@ -61,14 +54,7 @@ RSpec.describe "New Event Form" do
 
       expect(page).to have_button("Create Event")
 
-
-      # Assert that there is a button to Oauth google
-      # Assert redirect to form after authentication
-      # Assert that there is a field for title, description, street address, zipcode, date_time, private_status
-
-
     end
   end
 end
 
-# get "/users/:id/events/oauth", to: "events#oauth", as: :oauth
