@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   root "application#welcome"
 
   resources :users do
-    resources :events, only: %i[index show create new]
-    resources :rooms
-    resources :friends, only: %i[index]
+      resources :events, only: %i[index show create new], controller: 'users/events'
+      resources :rooms
+      resources :friends, only: %i[index]
   end
 
   resources :events, only: %i[index show]
@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login_form'
   post '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout', as: :logout
+  get '/oauth', to: 'goog_sesh#login'
 end
