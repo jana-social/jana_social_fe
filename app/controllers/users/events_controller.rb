@@ -8,4 +8,11 @@ class Users::EventsController < ApplicationController
   def new
 
   end
+
+  def update
+  end
+
+  def destroy
+    
+  end
 end
