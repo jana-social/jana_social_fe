@@ -1,6 +1,6 @@
 class GoogSeshController < ApplicationController
   def login
-    redirect_to client.authorization_uri.to_s, allow_other_host: true
+    redirect_to @client.authorization_uri.to_s, allow_other_host: true
   end
 
   def callback
