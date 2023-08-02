@@ -12,7 +12,7 @@ class GoogSeshController < ApplicationController
 
     session[:authorization] = response
 
-    redirect_to user_event_new_path
+    redirect_to new_user_event_path
   end
 
   private 
