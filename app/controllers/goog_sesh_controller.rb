@@ -1,6 +1,7 @@
 class GoogSeshController < ApplicationController
   def login
-    redirect_to @client.authorization_uri.to_s, allow_other_host: true
+    client ||= Signet::OAuth2::Client.new(client_params)
+    redirect_to client.authorization_uri.to_s, allow_other_host: true
   end
 
   def callback
@@ -16,14 +17,14 @@ class GoogSeshController < ApplicationController
 
   private 
 
-  def client
-    @client ||= Signet::OAuth2::Client.new({
+  def client_params
+    {
       client_id: ENV['google_client_id'],
       client_secret: ENV['google_client_secret'],
       authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
       token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
       scope: Google::Apis::CalendarV3::AUTH_CALENDAR,
       redirect_uri: "https://jana-social-fe.onrender.com/callback"
-    })
+    }
   end
 end
