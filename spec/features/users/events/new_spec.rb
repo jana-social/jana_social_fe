@@ -23,7 +23,7 @@ RSpec.describe "New Event Form" do
       expect(page).to have_link("Create Event")
       click_link("Create Event")
 
-      # expect(current_path).to eq(oauth_path(1))
+      expect(current_path).to eq(oauth_path(1))
       # visit page
       # hit Oauth
       # get redirected to the form with this info
