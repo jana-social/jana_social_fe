@@ -46,13 +46,13 @@ RSpec.describe "Get one event", type: :feature do
   it "displays buttons to My Events and Back to all Events" do
 
     expect(page).to have_link("My Events")
-    click_link "My Events"
+    click_on "My Events"
     expect(current_path).to eq(user_events_path(1))
 
     visit event_path(1)
 
-    expect(page).to have_link("Back to All Events")
-    click_link "Back to All Events"
+    expect(page).to have_link("Discover New Events")
+    click_link "Discover New Events"
     expect(current_path).to eq(events_path)
   end
 end
