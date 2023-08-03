@@ -38,6 +38,7 @@ RSpec.describe "/", type: :feature do
   it "will take a user to create a new account" do
     click_on("Create New User")
     response = File.read("spec/fixtures/created_user.json")
+
     stub_request(:post, "https://jana-social-be.onrender.com/api/v1/users/").
     with(
       body: {"email"=>"test3@test.com", "password"=>"test", "username"=>"test3", "zipcode"=>"80301"},
@@ -47,7 +48,7 @@ RSpec.describe "/", type: :feature do
       'Content-Type'=>'application/x-www-form-urlencoded',
       'User-Agent'=>'Faraday v2.7.10'
       }).
-    to_return(status: 200, body: response , headers: {})
+    to_return(status: 200, body: response, headers: {})
     expect(current_path).to eq(new_user_path)
 
     fill_in :username, with: "test3"
