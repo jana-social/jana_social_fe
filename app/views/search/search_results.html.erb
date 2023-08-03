@@ -24,15 +24,14 @@
             </div>
         </div>
     </header>
-
-   <div class="content-container">
+  <div class="content-container">
       <ul>
       <% @users.each do |user| %>
         <li>Username: <%= link_to user.username, search_user_path(user.id) %></li>
-        </br>
+        <br>
         <li>Likes: <%= user.likes %></li>
-        </br>
-        </br>
+        <br>
+        <br>
       <% end %>
       </ul>
 
