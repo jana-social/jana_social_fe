@@ -11,11 +11,6 @@ class EventsController < ApplicationController
     @user = params[:user_id]
   end
 
-  def create
-    user = params[:user_id]
-    EventsFacade.new.create_event(user, event_params)
-  end
-
   private
 
   def event_params
