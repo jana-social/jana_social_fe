@@ -22,10 +22,9 @@ class UserFacade
     end
   end
 
-  def send_photo(user_id, filename)
-    json = service.upload_photo(user_id, filename)
+  def send_photo(user_id, file)
+    json = service.upload_photo(user_id, file)
     @user = User.new(json[:data])
-    # require 'pry'; binding.pry
   end
 
   private

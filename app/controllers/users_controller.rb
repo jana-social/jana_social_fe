@@ -19,7 +19,8 @@ class UsersController < ApplicationController
 
   def update_photo
     @user = UserFacade.new.find_user(params[:id])
-    UserFacade.new.send_photo(params[:id], params[:file].original_filename)
+    require 'pry'; binding.pry
+    UserFacade.new.send_photo(params[:id], params[:file])
     redirect_to edit_user_path(@user.id)
   end
 end
