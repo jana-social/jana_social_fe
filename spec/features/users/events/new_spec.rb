@@ -1,8 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "New Event Form" do
   describe "Create a new event form" do
-
     it "redirects to Oauth authentication page" do
       user_id = 1
       json_response_hosting = File.read("spec/fixtures/get_hosting_events.json")
@@ -10,21 +9,31 @@ RSpec.describe "New Event Form" do
       json_response_user = File.read("spec/fixtures/user.json")
 
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}/events/hosting")
-      .to_return(status: 200, body: json_response_hosting)
+        .to_return(status: 200, body: json_response_hosting)
 
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}/events/attending")
-      .to_return(status: 200, body: json_response_attending)
+        .to_return(status: 200, body: json_response_attending)
 
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}")
-      .to_return(status: 200, body: json_response_user)
+        .to_return(status: 200, body: json_response_user)
 
       visit user_events_path(1)
 
       expect(page).to have_link("Create Event")
     end
 
-
     it "Displays for fields and buttons" do
+      json_response = File.read("spec/fixtures/get_one_event.json")
+      json_response_user = File.read("spec/fixtures/user.json")
+
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/events/")
+        .to_return(status: 200, body: json_response, headers: {})
+
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1")
+        .to_return(status: 200, body: json_response_user)
+
+      stub_request(:post, "https://jana-social-be.onrender.com/api/v1/users/1/events")
+        .to_return(status: 200, body: json_response)
 
       visit new_user_event_path(1)
 
@@ -53,7 +62,6 @@ RSpec.describe "New Event Form" do
       expect(page).to have_content("Private")
 
       expect(page).to have_button("Create Event")
-
     end
   end
 end
