@@ -9,7 +9,12 @@ class SearchController < ApplicationController
   end
 
   def search_results
-    @users = UserFacade.new.searched_users(session[:user_id], params[:radius])
+    if params[:radius]?
+      @users = UserFacade.new.searched_users(session[:user_id], params[:radius])
+      cookies[:radius] = params[:radius]
+    else
+      @users = UserFacade.new.searched_users(session[:user_id], cookies[:radius])
+    end
   end
 
 private
