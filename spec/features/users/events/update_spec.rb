@@ -4,7 +4,7 @@ RSpec.describe "Update Event Form" do
   it "Shows edit form" do
     json_response_event = File.read("spec/fixtures/get_one_event.json")
 
-    stub_request(:get, "http://localhost:3000/api/v1/events/1")
+    stub_request(:get, "https://jana-social-be.onrender.com/api/v1/events/1")
       .to_return(status: 200, body: json_response_event, headers: {})
 
     visit event_edit_path(1, 1)

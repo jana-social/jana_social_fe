@@ -12,10 +12,15 @@ class Users::EventsController < ApplicationController
 
   def update
     EventsFacade.new.update_event(params[:user_id], params[:event_id], event_params)
+    redirect_to user_events_path
   end
 
   def destroy
     
+  end
+
+  def show
+
   end
 
   private

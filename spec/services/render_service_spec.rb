@@ -190,7 +190,7 @@ RSpec.describe RenderService do
         expect(attributes[:date_time]).to be_a(String)
 
         expect(attributes).to have_key(:private)
-        expect(attributes[:private]).to be_in([true, false])# change to boolean
+        expect(attributes[:private]).to be_in([true, false]) # change to boolean
 
         expect(attributes).to have_key(:host)
         expect(attributes[:host]).to be_a(String)
@@ -199,7 +199,7 @@ RSpec.describe RenderService do
         expect(attributes[:user_id]).to be_a(Integer)
       end
     end
-  
+
     it "returns all hosting events" do
       json_response = File.read("spec/fixtures/get_attending_events.json")
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1/events/attending")
@@ -239,7 +239,7 @@ RSpec.describe RenderService do
         expect(attributes[:date_time]).to be_a(String)
 
         expect(attributes).to have_key(:private)
-        expect(attributes[:private]).to be_in([true, false])# change to boolean
+        expect(attributes[:private]).to be_in([true, false]) # change to boolean
 
         expect(attributes).to have_key(:host)
         expect(attributes[:host]).to be_a(String)
@@ -290,7 +290,7 @@ RSpec.describe RenderService do
         expect(attributes[:date_time]).to be_a(String)
 
         expect(attributes).to have_key(:private)
-        expect(attributes[:private]).to be_in([true, false])# change to boolean
+        expect(attributes[:private]).to be_in([true, false]) # change to boolean
 
         expect(attributes).to have_key(:host)
         expect(attributes[:host]).to be_a(String)
@@ -341,7 +341,7 @@ RSpec.describe RenderService do
         expect(attributes[:date_time]).to be_a(String)
 
         expect(attributes).to have_key(:private)
-        expect(attributes[:private]).to be_in([true, false])# change to boolean
+        expect(attributes[:private]).to be_in([true, false]) # change to boolean
 
         expect(attributes).to have_key(:host)
         expect(attributes[:host]).to be_a(String)
@@ -353,18 +353,15 @@ RSpec.describe RenderService do
   end
 
   describe "#update_user_events" do
-  it "PATCHes a specific user's event" do
-    json_response = File.read("spec/fixtures/update_event_user.json")
-    stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1/events/attending")
-      .to_return(status: 200, body: json_response)
+    it "PATCHes a specific user's event" do
+      json_response = File.read("spec/fixtures/update_user_event.json")
+      url = "https://jana-social-be.onrender.com/api/v1/users/1/events/1"
+      stub_request(:patch, url)
+        .to_return(status: 200, body: json_response)
 
-    results = RenderService.new.update_event_user(1)
-    expect(results).to be_a(Hash)
-
-    events = results[:data]
-    expect(events).to be_an(Array)
-
-    events.each do |event|
+      results = RenderService.new.update_event(1, 1, { title: "Austin's Edit" })
+      event = results
+      expect(event).to be_a(Hash)
       expect(event).to have_key(:id)
       expect(event[:id]).to be_a(String)
 
@@ -392,14 +389,10 @@ RSpec.describe RenderService do
       expect(attributes[:date_time]).to be_a(String)
 
       expect(attributes).to have_key(:private)
-      expect(attributes[:private]).to be_in([true, false])# change to boolean
+      expect(attributes[:private]).to be_in([true, false]) # change to boolean
 
       expect(attributes).to have_key(:host)
-      expect(attributes[:host]).to be_a(String)
-
-      expect(attributes).to have_key(:user_id)
-      expect(attributes[:user_id]).to be_a(Integer)
+      expect(attributes[:host]).to be_a(Integer)
     end
   end
-end
 end
