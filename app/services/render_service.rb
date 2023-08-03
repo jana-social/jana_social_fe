@@ -65,7 +65,7 @@ class RenderService
   end
 
   def post_url(url, params)
-    conn.post(url, params)
+    response = conn.post(url, params)
     JSON.parse(response.body, symbolize_names: true)
   end
 
