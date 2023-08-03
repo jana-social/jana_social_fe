@@ -1,67 +1,94 @@
-<!-- app/views/api/v1/events/index.html.erb -->
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Your head content -->
-  </head>
-  <body id="page-top">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Jana Social</title>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="/path/to/custom.css">
+    <!-- Fonts CSS-->
+</head>
+<body id="page-top">
     <header class="masthead bg-primary text-white text-center">
-      <div class="container d-flex align-items-center flex-column">
-        <%= link_to "View My Dashboard", user_path(current_user) %>
-        <!-- Masthead Heading-->
-        <h1 class="masthead-heading mb-0">Jana Social</h1>
-        <!-- Icon Divider-->
-        <div class="divider-custom divider-light">
-          <div class="divider-custom-line"></div>
-          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-          <div class="divider-custom-line"></div>
+        <div class="container d-flex align-items-center flex-column">
+            <!-- Masthead Heading-->
+            <h1 class="masthead-heading mb-0">Jana Social</h1>
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
         </div>
-        <!-- Masthead Subheading-->
-      </div>
     </header>
     <section class="page-section portfolio" id="portfolio">
-      <div class="container">
-        <!-- Portfolio Section Heading-->
-        <div class="text-center">
-          <h2 class="page-section-heading text-secondary mb-0 d-inline-block">All Events</h2>
+        <div class="container">
+            <!-- Portfolio Section Heading-->
+            <div class="text-center">
+                <h2 class="page-section-heading text-secondary mb-0 d-inline-block">All Events</h2>
+            </div>
+            <!-- Icon Divider-->
+            <!-- Log in User-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Portfolio Grid Items-->
+            <div class="row justify-content-center">
+                <!-- Portfolio Items-->
+                <div class="event-list">
+                    <% if @facade.present? %>
+                        <ul>
+                            <% @facade.each_with_index do |event, index| %>
+                                <li class="event-item" id="event-<%= index + 1 %>">
+                                    <h3><strong class="event-title"><%= link_to event.title, event_path(event.id.to_i) %></strong></h3>
+                                    <p class="event-description">Discription: <%= event.description %></p>
+                                    <p class="event-details">Street Address: <%= event.street_address %></p>
+                                    <p class="event-details">Zipcode: <%= event.zipcode %></p>
+                                    <p class="event-details">Date/Time: <%= event.date_time %></p>
+                                    <!-- Date Time:  Time.zone.parse(event.date_time).strftime('%B %e, %Y, %l:%M%P')<br> -->
+                                    <!-- Date will look correct in saop but not in server -->
+                                    <p class="event-details">Is this event private?: <%= event.private_status %></p>
+                                    <% binding.pry %>
+                                    <p class="event-details">Host: <%= event.host %></p>
+                                </li>
+                                <hr>
+                            <% end %>
+                        </ul>
+                    <% else %>
+                        <h3>There are no events to display</h3>
+                    <% end %>
+                </div>
+            </div>
         </div>
-        <!-- Icon Divider-->
-        <!-- Log in User-->
-        <div class="divider-custom">
-          <div class="divider-custom-line"></div>
-          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-          <div class="divider-custom-line"></div>
-        </div>
-        <!-- Portfolio Grid Items-->
-        <div class="row justify-content-center">
-          <!-- Portfolio Items-->
-          <div>
-            <% if @facade.present? %>
-              <ul>
-                <% @facade.each_with_index do |event, index| %>
-                  <li id="event-<%= index + 1 %>">
-                    <strong>Title: <%= link_to event.title, event_path(event.id.to_i) %></strong><br>
-                    Description: <%= event.description %><br>
-                    Street Address: <%= event.street_address %><br>
-                    Zipcode: <%= event.zipcode %><br>
-                    Date/Time: <%= event.date_time %><br>
-                    <!-- Date Time:  Time.zone.parse(event.date_time).strftime('%B %e, %Y, %l:%M%P')<br> -->
-                    <!--Date will look correct in saop but not in server -->
-                    Private Status: <%= event.private_status %><br>
-                    Host: <%= event.host %><br>
-                    <!-- Needs host name, not ID %> -->
-                  </li>
-                  <hr>
-                <% end %>
-              </ul>
-            <% else %>
-              <h3>There are no events to display</h3>
-            <% end %>
-          </div>
-        </div>
-      </div>
     </section>
-  </body>
-
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <!-- Footer Location-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="mb-4">Messages</h4>
+                    <p class="pre-wrap lead mb-0"><%= link_to "My Messages", user_rooms_path(current_user), class: "btn btn-primary" %></p>
+                </div>
+                <!-- Footer Social Icons-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="mb-4">Events</h4>
+                    <p class="pre-wrap lead mb-0"><%= link_to "My Events", user_events_path(current_user), class: "btn btn-primary" %></p><br>
+                    <p class="pre-wrap lead mb-0"><%= link_to "Discover New Events", events_path, class: "btn btn-primary" %></p>
+                </div>
+                <!-- Footer About Text-->
+                <div class="col-lg-4">
+                    <h4 class="mb-4">Friends</h4>
+                    <p class="pre-wrap lead mb-0"><%= link_to "Discover New Friends", search_dashboard_path, class: "btn btn-primary" %></p><br>
+                    <p class="pre-wrap lead mb-0"><%= link_to "My Friends", user_friends_path(current_user), class: "btn btn-primary" %></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
