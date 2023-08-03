@@ -17,6 +17,24 @@ class EventsFacade
     service.create_event(user, event_params)
   end
 
+  def get_hosting(user)
+    request = service.get_hosting_events(user)
+    request[:data].map do |event|
+      Event.new(event)
+    end
+  end
+
+  def get_attending(user)
+    request = service.get_attending_events(user)
+    request[:data].map do |event|
+      Event.new(event)
+    end
+  end
+
+  def update_event(user_id, event_id, event_params)
+    service.update_event(user_id, event_id, event_params)
+  end
+
   def service
     RenderService.new
   end
