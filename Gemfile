@@ -53,6 +53,7 @@ gem 'bootstrap_form'
 gem 'faraday'
 gem 'figaro'
 gem 'google-api-client', require: 'google/apis/calendar_v3'
+gem 'geocoder'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
