@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   root "application#welcome"
 
   resources :users do
-      resources :events, only: %i[index show create new], controller: 'users/events'
-      resources :rooms
-      resources :friends, only: %i[index]
+    resources :events, only: %i[index show create new], controller: 'users/events'
+    resources :rooms
+    resources :friends, only: %i[index]
   end
 
   resources :events, only: %i[index show]
