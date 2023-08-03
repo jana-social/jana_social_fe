@@ -1,5 +1,3 @@
-<%= "Find Friends" %>
-
 <html>
 <head>
   <title>Static Map</title>
@@ -10,6 +8,14 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
+    }
+  </style>
+
+  <title>Center Text Example</title>
+  <style>
+    /* Center the text */
+    .center-text {
+      text-align: center;
     }
   </style>
 </head>
@@ -25,14 +31,35 @@
         </div>
     </header>
 
+  <div class="center-text">
+    <h2>Find Friends</h2>
+  </div>
+  
   <div class="content-container">
     <img src="https://www.mapquestapi.com/staticmap/v5/map?key=<%= Figaro.env.MAPQUEST_API_KEY %>&center=<%= @user.zipcode %>&size=400,300@2x" alt="Static Map">
 
-    <%= form_tag search_results_path, method: :get do %>
-      <%= label_tag :radius, 'Search radius (miles):' %>
-      <%= number_field_tag :radius, params[:radius], min: 1, max: 500 %>
-      <%= submit_tag 'Search' %>
-    <% end %>
+      <%= form_tag search_results_path, method: :get do %>
+        <div class="form-group">
+          <%= label_tag :radius, 'Search radius (miles):' %>
+          <input type="range" class="form-range" name="radius" id="radius-slider" min="1" max="2500" step="1" value="<%= params[:radius] || 0 %>">
+          <span id="radius-value"><%= params[:radius] || 0 %></span> miles
+          <% hidden_field_tag :radius, params[:radius], min: 1, max: 2500, class: 'form-control', id: 'radius-input' %>
+        </div>
+        <%= submit_tag 'Search', class: 'btn btn-primary' %>
+      <% end %>
+
+      <script>
+          // Get references to the slider and input elements
+          const slider = document.getElementById('radius-slider');
+          const input = document.getElementById('radius-input');
+          const valueSpan = document.getElementById('radius-value');
+
+          // Update the value span and input value when the slider is changed
+          slider.addEventListener('input', function() {
+            valueSpan.textContent = slider.value;
+            input.value = slider.value;
+          });
+        </script>
   </div>
 
 </body>
