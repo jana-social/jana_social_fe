@@ -47,7 +47,7 @@
                             <% @facade.each_with_index do |event, index| %>
                                 <li class="event-item" id="event-<%= index + 1 %>">
                                     <h3><strong class="event-title"><%= link_to event.title, event_path(event.id.to_i) %></strong></h3>
-                                    <p class="event-description">Discription: <%= event.description %></p>
+                                    <p class="event-description">Description: <%= event.description %></p>
                                     <p class="event-details">Street Address: <%= event.street_address %></p>
                                     <p class="event-details">Zipcode: <%= event.zipcode %></p>
                                     <p class="event-details">Date/Time: <%= event.date_time %></p>
