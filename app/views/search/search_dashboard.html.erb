@@ -12,6 +12,28 @@
       height: 100vh;
     }
   </style>
+
+  <script>
+    document.getElementById("location").addEventListener("click", getLocation)
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            window.location.href = "<%= search_dashboard_path %>" + "?latitude=" + latitude + "&longitude=" + longitude + "&radius=<%= params[:radius]%>";
+          },
+          function(error) {
+            console.error("Error Code = " + error.code + " - " + error.message);
+          }
+        );
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+  </script>
 </head>
 <body>
     <header class="masthead bg-primary text-white text-center">
@@ -26,13 +48,14 @@
     </header>
 
   <div class="content-container">
-    <img src="https://www.mapquestapi.com/staticmap/v5/map?key=<%= Figaro.env.MAPQUEST_API_KEY %>&center=<%= @user.zipcode %>&size=400,300@2x" alt="Static Map">
+    <img src="https://www.mapquestapi.com/staticmap/v5/map?key=<%= Figaro.env.MAPQUEST_API_KEY %>&center=<%= @latitude %>,<%= @longitude %>&size=400,300@2x" alt="Static Map">
 
     <%= form_tag search_results_path, method: :get do %>
       <%= label_tag :radius, 'Search radius (miles):' %>
       <%= number_field_tag :radius, params[:radius], min: 1, max: 500 %>
       <%= submit_tag 'Search' %>
-    <% end %>
+    <% end %><br>
+    <button id="location"> Use My Location </button>
   </div>
 
 </body>
