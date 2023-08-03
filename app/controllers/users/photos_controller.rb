@@ -4,5 +4,6 @@ class Users::PhotosController < ApplicationController
   end
 
   def update
+    require 'pry'; binding.pry
   end
 end

@@ -5,18 +5,12 @@ Rails.application.routes.draw do
 
   root "application#welcome"
 
-<<<<<<< HEAD
   resources :users, only: %i[index show create edit update]
-  namespace :users do
-    resources :events, only: %i[index show create new]
-    resources :rooms
-    resources :friends, only: %i[index]
-=======
+  
   resources :users do
       resources :events, only: %i[index show create new], controller: 'users/events'
       resources :rooms
       resources :friends, only: %i[index]
->>>>>>> 7c9be76fe719cb9238be31cb92275c724eb923da
   end
   
   get "/users/:id/photos/edit", to: "users/photos#edit", as: :user_photo_edit
@@ -30,13 +24,9 @@ Rails.application.routes.draw do
     resources :users, only: %i[show]
   end
 
-<<<<<<< HEAD
   
 
   get "search_dashboard", to: "search#dashboard", as: :search_dashboard
-=======
-  get "search_dashboard", to: "search#search_dashboard", as: :search_dashboard
->>>>>>> 7c9be76fe719cb9238be31cb92275c724eb923da
   get "find_friends", to: "search#find_friends", as: :find_friends
   get "search_results", to: "search#search_results", as: :search_results
 

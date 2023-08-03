@@ -37,9 +37,9 @@ RSpec.describe "edit_user_path", type: :feature do
       click_on "Log In"
 
       expect(current_path).to eq(dashboard_path(1))
-      expect(page).to have_content("Edit Profile")
+      expect(page).to have_content("Update My Profile")
 
-      click_on "Edit Profile"
+      click_on "Update My Profile"
       expect(current_path).to eq(edit_user_path(1))
 
       expect(page).to have_content("Upload Photo")

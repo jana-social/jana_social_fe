@@ -1,26 +1,3 @@
-<<<<<<< HEAD
-<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h1><%= @user.username %>'s Dashboard</h1>
-<h2>Username: <%= @user.username %></h2>
-<p>Zipcode: <%= @user.zipcode %></p>
-<p>Bio: <%= @user.bio %></p>
-<p>What I like: <%= @user.likes %></p>
-<p>What I dislike: <%= @user.dislikes %></p>
-<p>Profile Picture: <%= @user.photo_url %></p>
-<p><%= link_to "Edit Profile", edit_user_path %></p>
-=======
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,7 +23,7 @@
                 <p>What I like: <%= @user.likes %></p>
                 <p>What I try to stay away from: <%= @user.dislikes %></p>
                 <p>Profile Picture: <img src="<%= @user.photo_url %>" class="img-thumbnail"></p>
-                    <div class=page-link><%= link_to "Update My Profile Photo", edit_user_path(current_user) %></div>
+                    <div class=page-link><%= link_to "Update My Profile", edit_user_path(current_user) %></div>
             </div>
         </header>
        <footer class="footer text-center">
@@ -72,4 +49,3 @@
                 </div>
             </div>
 </html>
->>>>>>> 7c9be76fe719cb9238be31cb92275c724eb923da
