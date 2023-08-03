@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
+
   root "application#welcome"
 
   resources :users do
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[show]
   end
 
-  get "dashboard", to: "search#dashboard", as: :search_dashboard
+  get "search_dashboard", to: "search#search_dashboard", as: :search_dashboard
   get "find_friends", to: "search#find_friends", as: :find_friends
   get "search_results", to: "search#search_results", as: :search_results
 
