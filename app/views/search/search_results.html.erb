@@ -22,7 +22,7 @@
 
       <ul>
       <% @users.each do |user| %>
-        <li>Username: <%= user.username %></li>
+        <li>Username: <%= link_to user.username, search_user_path(user.id) %></li>
         </br>
         <li>Likes: <%= user.likes %></li>
         </br>
