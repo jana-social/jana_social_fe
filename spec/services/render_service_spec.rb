@@ -98,10 +98,10 @@ RSpec.describe RenderService do
         expect(attributes[:date_time]).to be_a(String)
 
         expect(attributes).to have_key(:private_status)
-        expect(attributes[:private_status]).to be_a(String) # change to boolean
+        expect(attributes[:private_status]).to be_in([true, false]) # change to boolean
 
         expect(attributes).to have_key(:host)
-        expect(attributes[:host]).to be_a(String)
+        expect(attributes[:host]).to be_an(Integer)
       end
     end
 
@@ -145,10 +145,10 @@ RSpec.describe RenderService do
       expect(attributes[:date_time]).to be_a(String)
 
       expect(attributes).to have_key(:private_status)
-      expect(attributes[:private_status]).to be_a(String) # change to boolean
+      expect(attributes[:private_status]).to be_in([true, false]) # change to boolean
 
       expect(attributes).to have_key(:host)
-      expect(attributes[:host]).to be_a(String)
+      expect(attributes[:host]).to be_an(Integer)
     end
 
     it "returns all hosting events" do
@@ -189,8 +189,8 @@ RSpec.describe RenderService do
         expect(attributes).to have_key(:date_time)
         expect(attributes[:date_time]).to be_a(String)
 
-        expect(attributes).to have_key(:private)
-        expect(attributes[:private]).to be_in([true, false]) # change to boolean
+        expect(attributes).to have_key(:private_status)
+        expect(attributes[:private_status]).to be_in([true, false]) # change to boolean
 
         expect(attributes).to have_key(:host)
         expect(attributes[:host]).to be_a(String)
@@ -238,8 +238,8 @@ RSpec.describe RenderService do
         expect(attributes).to have_key(:date_time)
         expect(attributes[:date_time]).to be_a(String)
 
-        expect(attributes).to have_key(:private)
-        expect(attributes[:private]).to be_in([true, false]) # change to boolean
+        expect(attributes).to have_key(:private_status)
+        expect(attributes[:private_status]).to be_in([true, false]) # change to boolean
 
         expect(attributes).to have_key(:host)
         expect(attributes[:host]).to be_a(String)
@@ -289,8 +289,8 @@ RSpec.describe RenderService do
         expect(attributes).to have_key(:date_time)
         expect(attributes[:date_time]).to be_a(String)
 
-        expect(attributes).to have_key(:private)
-        expect(attributes[:private]).to be_in([true, false]) # change to boolean
+        expect(attributes).to have_key(:private_status)
+        expect(attributes[:private_status]).to be_in([true, false]) # change to boolean
 
         expect(attributes).to have_key(:host)
         expect(attributes[:host]).to be_a(String)
@@ -340,8 +340,8 @@ RSpec.describe RenderService do
         expect(attributes).to have_key(:date_time)
         expect(attributes[:date_time]).to be_a(String)
 
-        expect(attributes).to have_key(:private)
-        expect(attributes[:private]).to be_in([true, false]) # change to boolean
+        expect(attributes).to have_key(:private_status)
+        expect(attributes[:private_status]).to be_in([true, false]) # change to boolean
 
         expect(attributes).to have_key(:host)
         expect(attributes[:host]).to be_a(String)
@@ -388,8 +388,8 @@ RSpec.describe RenderService do
       expect(attributes).to have_key(:date_time)
       expect(attributes[:date_time]).to be_a(String)
 
-      expect(attributes).to have_key(:private)
-      expect(attributes[:private]).to be_in([true, false]) # change to boolean
+      expect(attributes).to have_key(:private_status)
+      expect(attributes[:private_status]).to be_in([true, false]) # change to boolean
 
       expect(attributes).to have_key(:host)
       expect(attributes[:host]).to be_a(Integer)
