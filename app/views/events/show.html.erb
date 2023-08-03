@@ -19,5 +19,15 @@
   </style>
 </head>
 <body>
+<h1> Title: <%= @event.title %> </h1>
+<p> Description: <%= @event.description %> </p>
+<p> Street Address: <%= @event.street_address %> </p>
+<p> Zipcode: <%= @event.zipcode %> </p>
+<p> Date/Time: <%= @event.date_time %> </p>
+<br>
+<br>
+<%= link_to "My Events", user_events_path(current_user) %>
+<%= link_to "User Dashboard", user_path(current_user) %>
+<%= link_to "Back to All Events", events_path %>
 </body>
 </html>
