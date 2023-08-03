@@ -1,0 +1,13 @@
+{
+"data": {
+"id":"2",
+"type":"user",
+"attributes":
+  {
+    "username":"Karl",
+    "bio":"Where is my father",
+    "likes":"self help books",
+    "dislikes":"My father"
+  }
+}
+  }
