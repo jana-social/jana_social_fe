@@ -58,3 +58,4 @@ RSpec.describe "New Event Form" do
   end
 end
 
+# get "/users/:id/events/oauth", to: "events#oauth", as: :oauth

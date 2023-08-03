@@ -3,6 +3,10 @@ class EventsController < ApplicationController
     @facade = EventsFacade.new.get_all_events
   end
 
+  def show
+    @event = EventsFacade.new.get_one_event(params[:id])
+  end
+
   def new
     @user = params[:user_id]
   end
