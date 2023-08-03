@@ -34,8 +34,8 @@
 <img src="https://unsplash.com/photos/2l0CWTpcChI" alt="user_image">
 
 <div class="button-container">
-      <%= button_to "Accept" %>
-      <%= button_to "Reject" %>
+      <%= button_to "Accept", search_users_path(user_id: session[:user_id], friend_id: @user.id, status: 'approved'), method: :post %>
+      <%= button_to "Reject", search_users_path(user_id: session[:user_id], friend_id: @user.id, status: 'declined'), method: :post %>
     </div>
 </ul>
 </body>

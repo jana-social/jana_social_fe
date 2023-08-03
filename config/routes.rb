@@ -6,15 +6,15 @@ Rails.application.routes.draw do
   root "application#welcome"
 
   resources :users do
-      resources :events, only: %i[index show create new], controller: 'users/events'
-      resources :rooms
-      resources :friends, only: %i[index]
+    resources :events, only: %i[index show create new], controller: 'users/events'
+    resources :rooms
+    resources :friends, only: %i[index]
   end
 
   resources :events, only: %i[index show]
   resources :search, only: %i[index create]
   namespace :search do
-    resources :users, only: %i[show]
+    resources :users, only: %i[show create]
   end
 
   get "search_dashboard", to: "search#search_dashboard", as: :search_dashboard

@@ -35,7 +35,6 @@ RSpec.describe "Get one event", type: :feature do
   end
 
   it "displays one event" do
-    
     expect(page).to have_content("Casey's Sweet Quiet Gathering")
     expect(page).to have_content("Movie for people with noise sensitivities")
     expect(page).to have_content("5479 William Way, East Sonnyhaven, LA")
@@ -44,7 +43,6 @@ RSpec.describe "Get one event", type: :feature do
   end
 
   it "displays buttons to My Events and Back to all Events" do
-
     expect(page).to have_link("My Events")
     click_on "My Events"
     expect(current_path).to eq(user_events_path(1))
