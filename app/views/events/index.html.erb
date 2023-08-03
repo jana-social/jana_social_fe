@@ -8,6 +8,7 @@
   <body id="page-top">
     <header class="masthead bg-primary text-white text-center">
       <div class="container d-flex align-items-center flex-column">
+        <%= link_to "View My Dashboard", user_path(current_user) %>
         <!-- Masthead Heading-->
         <h1 class="masthead-heading mb-0">Jana Social</h1>
         <!-- Icon Divider-->
@@ -40,7 +41,7 @@
               <ul>
                 <% @facade.each_with_index do |event, index| %>
                   <li id="event-<%= index + 1 %>">
-                    <strong>Title: <%= link_to event.title, event_path(event.id) %></strong><br>
+                    <strong>Title: <%= link_to event.title, event_path(event.id.to_i) %></strong><br>
                     Description: <%= event.description %><br>
                     Street Address: <%= event.street_address %><br>
                     Zipcode: <%= event.zipcode %><br>
@@ -62,4 +63,5 @@
       </div>
     </section>
   </body>
+
 </html>
