@@ -9,7 +9,7 @@ class SearchController < ApplicationController
   end
 
   def search_results
-    if params[:radius]?
+    if params[:radius]
       @users = UserFacade.new.searched_users(session[:user_id], params[:radius])
       cookies[:radius] = params[:radius]
     else
@@ -17,14 +17,12 @@ class SearchController < ApplicationController
     end
   end
 
-private
+  private
 
   def verify_login
-    if !session[:user_id]
-      redirect_to login_path
-      flash[:error] = "Login to Search"
-    end
+    return unless session[:user_id]
+
+    redirect_to login_path
+    flash[:error] = "Login to Search"
   end
 end
-
-
