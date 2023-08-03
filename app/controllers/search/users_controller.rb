@@ -9,8 +9,6 @@ class Search::UsersController < ApplicationController
     redirect_to search_results_path
   end
 
-  private
-
   # def params
   #   params.permit(:friend_id, :user_id, :status)
   # end

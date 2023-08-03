@@ -39,16 +39,17 @@ RSpec.describe "/", type: :feature do
     click_on("Create New User")
     response = File.read("spec/fixtures/created_user.json")
 
-    stub_request(:post, "https://jana-social-be.onrender.com/api/v1/users/").
-    with(
-      body: {"email"=>"test3@test.com", "password"=>"test", "username"=>"test3", "zipcode"=>"80301"},
-      headers: {
-      'Accept'=>'*/*',
-      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-      'Content-Type'=>'application/x-www-form-urlencoded',
-      'User-Agent'=>'Faraday v2.7.10'
-      }).
-    to_return(status: 200, body: response, headers: {})
+    stub_request(:post, "https://jana-social-be.onrender.com/api/v1/users/")
+      .with(
+        body: { "email"=>"test3@test.com", "password"=>"test", "username"=>"test3", "zipcode"=>"80301" },
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+          "Content-Type" => "application/x-www-form-urlencoded",
+          "User-Agent" => "Faraday v2.7.10"
+        }
+      )
+      .to_return(status: 200, body: response, headers: {})
     expect(current_path).to eq(new_user_path)
 
     fill_in :username, with: "test3"
@@ -58,7 +59,6 @@ RSpec.describe "/", type: :feature do
 
     click_on "Create New Account"
     expect(current_path).to eq(root_path)
-
   end
 
   it "will allow a user to visit dashboard and log out after logging in" do

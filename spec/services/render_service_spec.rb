@@ -127,16 +127,17 @@ RSpec.describe RenderService do
             }
 
             response = File.read("spec/fixtures/created_user.json")
-            stub_request(:post, "https://jana-social-be.onrender.com/api/v1/users/").
-              with(
-                body: {"email"=>"test3@test.com", "password"=>"test", "username"=>"test3", "zipcode"=>"80301"},
+            stub_request(:post, "https://jana-social-be.onrender.com/api/v1/users/")
+              .with(
+                body: { "email"=>"test3@test.com", "password"=>"test", "username"=>"test3", "zipcode"=>"80301" },
                 headers: {
-                'Accept'=>'*/*',
-                'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-                'Content-Type'=>'application/x-www-form-urlencoded',
-                'User-Agent'=>'Faraday v2.7.10'
-                }).
-              to_return(status: 200, body: response, headers: {})
+                  "Accept" => "*/*",
+                  "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+                  "Content-Type" => "application/x-www-form-urlencoded",
+                  "User-Agent" => "Faraday v2.7.10"
+                }
+              )
+              .to_return(status: 200, body: response, headers: {})
 
             result = RenderService.new.create_user("/api/v1/users/", user_params)
 
@@ -190,7 +191,7 @@ RSpec.describe RenderService do
       end
 
       describe "::authenticate_with" do
-        context 'happy path' do
+        context "happy path" do
           it "returns a specific user provided they passed a valid email and password" do
             authenticated_user = File.read("spec/fixtures/authenticated_user.json")
             json_response = File.read("spec/fixtures/user.json")

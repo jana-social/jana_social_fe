@@ -16,11 +16,9 @@ class Users::EventsController < ApplicationController
   end
 
   def destroy
-    
   end
 
   def show
-
   end
 
   private

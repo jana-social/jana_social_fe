@@ -15,14 +15,14 @@ class GoogSeshController < ApplicationController
     redirect_to new_user_event_path(session[:user_id])
   end
 
-  private 
+  private
 
   def client_params
     {
-      client_id: ENV['google_client_id'],
-      client_secret: ENV['google_client_secret'],
-      authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
-      token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
+      client_id: ENV["google_client_id"],
+      client_secret: ENV["google_client_secret"],
+      authorization_uri: "https://accounts.google.com/o/oauth2/auth",
+      token_credential_uri: "https://accounts.google.com/o/oauth2/token",
       scope: Google::Apis::CalendarV3::AUTH_CALENDAR,
       redirect_uri: "https://jana-social-fe.onrender.com/callback"
     }
