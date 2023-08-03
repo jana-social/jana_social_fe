@@ -8,6 +8,7 @@ RSpec.describe "Update Event Form" do
       .to_return(status: 200, body: json_response_event, headers: {})
 
     visit event_edit_path(1, 1)
+
     expect(page).to have_field(:title)
     expect(page).to have_content("Title")
 

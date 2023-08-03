@@ -9,9 +9,9 @@
         "street_address": "5479 William Way, East Sonnyhaven, LA",
         "zipcode": "63637",
         "date_time": "8-17-23, 5:25 PM",
-        "private_status": "true",
-        "host": "1"
+        "private_status": true,
+        "host": 1
       }
     }
-  ]  
+  ]
 }
