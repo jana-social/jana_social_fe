@@ -1,43 +1,40 @@
-
 <html>
 <head>
   <title>Search Show Page</title>
   <style>
-    body {
+    .content-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh; /* Ensure the body takes up the full height of the viewport */
+      height: 100vh;
     }
-
-    h1 {
-      margin-bottom: 20px;
-    }
-
-    /* Style for the buttons */
-    .button-container {
-      display: flex; /* Display buttons side by side */
-      gap: 30px; /* Add spacing between buttons */
-    }
-
-    /* Add any other styling you need for the map and the form */
   </style>
 </head>
 <body>
- <h1>  Searched User Show Page </h1>
-<ul>
-<li><%= @user.username %></li>
-<li><%= @user.likes%></li>
-<li><%= @user.dislikes%></li>
-<li><%= @user.bio%></li>
-<img src="https://unsplash.com/photos/2l0CWTpcChI" alt="user_image">
-
-<div class="button-container">
-      <%= button_to "Accept", search_users_path(user_id: session[:user_id], friend_id: @user.id, status: 'approved'), method: :post %>
-      <%= button_to "Reject", search_users_path(user_id: session[:user_id], friend_id: @user.id, status: 'declined'), method: :post %>
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+      <h1 class="masthead-heading mb-0">Jana Social</h1>
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+      </div>
     </div>
-</ul>
+  </header>
+  <div class="content-container">
+    <h1> Searched User Show Page </h1>
+    <ul>
+      <li><%= @user.username %></li>
+      <li><%= @user.likes %></li>
+      <li><%= @user.dislikes %></li>
+      <li><%= @user.bio %></li>
+      <img src="https://unsplash.com/photos/2l0CWTpcChI" alt="user_image">
+      <div class="button-container">
+        <%= button_to "Accept", search_users_path(user_id: session[:user_id], friend_id: @user.id, status: 'approved'), method: :post %>
+        <%= button_to "Reject", search_users_path(user_id: session[:user_id], friend_id: @user.id, status: 'declined'), method: :post %>
+      </div>
+    </ul>
+  </div>
 </body>
 </html>
-
