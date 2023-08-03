@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-  # before_action :verify_login
+  before_action :verify_login
 
   def search_dashboard
     @user = UserFacade.new.find_user(session[:user_id])
