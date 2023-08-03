@@ -1,8 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "/login", type: :feature do
-  context 'happy path' do
-    it 'will allow a user to log in' do
+  context "happy path" do
+    it "will allow a user to log in" do
       json_response = File.read("spec/fixtures/authenticated_user.json")
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/search?p=test&q=stefanie@jaskolski-sanford.example")
         .to_return(status: 200, body: json_response, headers: {})
@@ -24,9 +24,9 @@ RSpec.describe "/login", type: :feature do
     end
   end
 
-  context 'sad path' do
+  context "sad path" do
     it "won't allow a user to login with the wrong credentials" do
-      response = { "errors": [ "Invalid username or password"] }
+      response = { "errors": ["Invalid username or password"] }
       json_response = response.to_json
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/search?p=testy&q=stefanie@jaskolski-sanford.example")
         .to_return(status: 200, body: json_response, headers: {})
