@@ -1,1 +1,101 @@
-<%= link_to "Create Event", oauth_path %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Jana Social</title>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <%= stylesheet_link_tag 'user', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Fonts CSS-->
+</head>
+<body id="page-top">
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+            <!-- Masthead Heading-->
+            <h1 class="masthead-heading mb-0">Jana Social</h1>
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+        </div>
+    </header>
+    <section class="page-section portfolio" id="portfolio" style="background-color: #f2f2f2;">
+        <div class="container">
+            <!-- Portfolio Section Heading-->
+            <div class="text-center">
+                <h2 class="page-section-heading text-secondary mb-0 d-inline-block">My Events</h2>
+            </div>
+            <!-- Icon Divider-->
+            <!-- Log in User-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Portfolio Grid Items-->
+            <div class="row justify-content-center">
+                <!-- Portfolio Items-->
+                <section id="hosting-events">
+                    <h3>Hosting Events</h3>
+                    <% if @hosting.empty? %>
+                        <p>You are not hosting any events.</p>
+                    <% else %>
+                        <ul>
+                            <% @hosting.each do |event| %>
+                                <li>
+                                    Title: <strong><%= link_to event.title, event_path(event) %></strong><br>
+                                    <%= event.date_time %>
+                                </li>
+                            <% end %>
+                        </ul>
+                    <% end %>
+                </section>
+                <section id="attending-events">
+                    <h3>Attending Events</h3>
+                    <% if @attending.empty? %>
+                        <p>You are not attending any events.</p>
+                    <% else %>
+                        <ul>
+                            Title: <% @attending.each do |event| %>
+                                <li>
+                                    <strong><%= link_to event.title, event_path(event) %></strong>
+                                    <%= event.date_time %>
+                                </li>
+                            <% end %>
+                        </ul>
+                    <% end %>
+                </section>
+            </div>
+        </div>
+    </section>
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <!-- Footer Location-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="mb-4">Messages</h4>
+                    <p class="pre-wrap lead mb-0"><%= link_to "My Messages", user_rooms_path(current_user), class: "btn btn-primary" %></p>
+                </div>
+                <!-- Footer Social Icons-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="mb-4">Events</h4>
+                    <p class="pre-wrap lead mb-0"><%= link_to "My Events", user_events_path(current_user), class: "btn btn-primary" %></p><br>
+                    <p class="pre-wrap lead mb-0"><%= link_to "Discover New Events", events_path, class: "btn btn-primary" %></p>
+                </div>
+                <!-- Footer About Text-->
+                <div class="col-lg-4">
+                    <h4 class="mb-4">Friends</h4>
+                    <p class="pre-wrap lead mb-0"><%= link_to "Discover New Friends", search_dashboard_path, class: "btn btn-primary" %></p><br>
+                    <p class="pre-wrap lead mb-0"><%= link_to "My Friends", user_friends_path(current_user), class: "btn btn-primary" %></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
