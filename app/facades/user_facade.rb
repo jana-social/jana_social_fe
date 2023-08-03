@@ -21,6 +21,13 @@ class UserFacade
     end
   end
 
+  def friends(user_id)
+    json = service.friends(user_id)
+    json[:data].map do |details|
+      UserSearch.new(details)
+    end
+  end
+
   def create_user(user_params)
     json = service.create_user("/api/v1/users/", user_params)
     @user = User.new(json[:data])

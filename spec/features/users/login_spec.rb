@@ -19,7 +19,6 @@ RSpec.describe "/login", type: :feature do
       fill_in :email, with: "stefanie@jaskolski-sanford.example"
       fill_in :password, with: "test"
       click_on "Log In"
-
       expect(current_path).to eq(dashboard_path(1))
     end
   end

@@ -26,28 +26,4 @@
                 <div class=page-link><%= link_to "Update My Profile Photo", edit_user_path(current_user) %></div>
             </div>
         </header>
-        <footer class="footer text-center">
-            <div class="container">
-                <div class="row">
-                    <!-- Footer Location-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="mb-4">Messages</h4>
-                        <p class="pre-wrap lead mb-0"><%= link_to "My Messages", user_rooms_path(current_user) %></p>
-                    </div>
-                    <!-- Footer Social Icons-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="mb-4">Events</h4>
-                        <p class="pre-wrap lead mb-0"><%= link_to "My Events", user_events_path(current_user) %></p>
-                        <p class="pre-wrap lead mb-0"><%= link_to "Discover New Events", events_path %></p>
-                    </div>
-                    <!-- Footer About Text-->
-                    <div class="col-lg-4">
-                        <h4 class="mb-4">Friends</h4>
-                        <p class="pre-wrap lead mb-0"><%= link_to "Discover New Friends", search_dashboard_path %></p>
-                        <p class="pre-wrap lead mb-0"><%= link_to "My Friends", user_friends_path(current_user) %></p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </body>
 </html>
