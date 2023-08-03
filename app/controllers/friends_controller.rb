@@ -1,3 +1,5 @@
 class FriendsController < ApplicationController
-  def index; end
+  def index
+    @friends = UserFacade.new.friends(session[:user_id])
+  end
 end

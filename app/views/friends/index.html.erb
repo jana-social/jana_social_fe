@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>My Friends</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* Ensure the body takes up the full height of the viewport */
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    /* Add any other styling you need for the map and the form */
+  </style>
+</head>
+<body>
+<ul>
+  <% @friends.each do |friend| %>
+  <li><%= friend.username %></li>
+  <li><%= friend.bio %></li>
+  </br>
+  <% end %>
+</ul>
+</body>
+</html>

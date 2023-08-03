@@ -20,8 +20,8 @@ class SearchController < ApplicationController
   private
 
   def verify_login
-    return unless session[:user_id]
-
+    return if session[:user_id]
+    
     redirect_to login_path
     flash[:error] = "Login to Search"
   end
