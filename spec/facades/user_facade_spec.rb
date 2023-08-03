@@ -50,13 +50,13 @@ RSpec.describe UserFacade do
     describe "::searched_users" do
       it "returns users within search radius of user" do
         user_id = 1
-        distance = 50
+        distance = 500
 
         json_response = File.read("spec/fixtures/user_search_response.json")
         stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}/find_friends?distance=#{distance}").
           to_return(status: 200, body: json_response, headers: {})
 
-          results = UserFacade.new.searched_users(1, 50)
+          results = UserFacade.new.searched_users(1, 500)
 
         results.each do |result|
           expect(result).to be_a(UserSearch)
