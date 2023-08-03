@@ -38,7 +38,6 @@ class RenderService
 
   def post_url(url, params)
     response = conn.post(url, params)
-    # This parses the response in the event you need to make an object with it
     JSON.parse(response.body, symbolize_names: true)
   end
 
@@ -51,8 +50,8 @@ class RenderService
 
   def conn
     ## Alway comment this in before pushing to production
-    Faraday.new(url: "https://jana-social-be.onrender.com/")
-    # Faraday.new(url: "http://localhost:3000")
+    # Faraday.new(url: "https://jana-social-be.onrender.com/")
+    Faraday.new(url: "http://localhost:3000")
     # change to http://localhost:3000 for local testing if needed
   end
 end

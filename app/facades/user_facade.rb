@@ -23,7 +23,8 @@ class UserFacade
   end
 
   def create_user(user_params)
-    require 'pry'; binding.pry
+    json = service.create_user('/api/v1/users/', user_params)
+    @user = User.new(json[:data])
   end
 
   private
