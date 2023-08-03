@@ -48,7 +48,6 @@ RSpec.describe "User Show Page" do
       expect(page).to have_content("self help books")
       click_on "Accept"
       expect(page).to_not have_content("Karl")
-      save_and_open_page
     end
   end
 end
