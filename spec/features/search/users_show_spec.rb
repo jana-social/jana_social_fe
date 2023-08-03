@@ -18,6 +18,10 @@ RSpec.describe "User Show Page" do
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1/find_friends?distance=20")
       .to_return(status: 200, body: json_response2, headers: {})
 
+      json_response3 = File.read("spec/fixtures/user_search_result.json")
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/2")
+      .to_return(status: 200, body: json_response3, headers: {})
+
       visit root_path
 
       fill_in :email, with: "stefanie@jaskolski-sanford.example"
@@ -26,14 +30,15 @@ RSpec.describe "User Show Page" do
       click_on "Find New Friends"
       fill_in "Search radius (miles)", with: 20
       click_on "Search"
+      click_link "Karl"
     end
 
     it "shows the user's info" do
       save_and_open_page
-      expect(page).to have_content("Cheesecake")
-      expect(page).to have_content("[\"Iphone pickled diy.\", \"Food truck put a bird on it distillery readymade chartreuse meh meditation.\", \"Cliche master mlkshk occupy ramps vice narwhal church-key.\", \"Keffiyeh mixtape tousled.\", \"Forage typewriter shabby chic gentrify.\"]")
-      expect(page).to have_content("Stumptown skateboard aesthetic green juice.")
-      expect(page).to have_content("Migas sriracha green juice yolo jean shorts narwhal muggle magic ramps kickstarter.")
+      expect(page).to have_content("Karl")
+      expect(page).to have_content("Where is my father")
+      expect(page).to have_content("My father")
+      expect(page).to have_content("self help books")
     end
   end
 end
