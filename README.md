@@ -72,7 +72,6 @@ This endpoint will return all users within the specific distance input radius
 }
 ```
 // a get request with :zipcode and :radius
-
 // I should get back an array of user objects
 // with this information attatched
 ```json

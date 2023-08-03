@@ -20,12 +20,9 @@
   </style>
 </head>
 <body>
+  <img src="https://www.mapquestapi.com/staticmap/v5/map?key=<%= Figaro.env.MAPQUEST_API_KEY %>&center=<%= @user.zipcode %>&size=400,300@2x" alt="Static Map">
 
-  <img src="https://www.mapquestapi.com/staticmap/v5/map?key=<%= Figaro.env.MAPQUEST_API_KEY %>&center=Denverk&size=400,300@2x" alt="Static Map">
-
-  <%= form_tag find_friends_path, method: :get do %>
-    <%= label_tag :zipcode, 'Enter your zipcode:' %>
-    <%= text_field_tag :zipcode, params[:zipcode] %>
+  <%= form_tag search_results_path, method: :get do %>
 
     <%= label_tag :radius, 'Search radius (miles):' %>
     <%= number_field_tag :radius, params[:radius], min: 1, max: 50 %>

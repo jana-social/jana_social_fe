@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   def login_form; end
 
   def login
-
     user = UserFacade.new.authenticate(params[:email], params[:password])
     if user == nil
       flash[:error] = 'Sorry, your credentials are invalid.'
