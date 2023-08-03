@@ -16,16 +16,15 @@ RSpec.describe "User Show Page" do
 
       json_response2 = File.read("spec/fixtures/user_search_response.json")
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1/find_friends?distance=20")
-      .to_return(status: 200, body: json_response2, headers: {})
+        .to_return(status: 200, body: json_response2, headers: {})
 
       json_response3 = File.read("spec/fixtures/user_search_result.json")
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/2")
-      .to_return(status: 200, body: json_response3, headers: {})
+        .to_return(status: 200, body: json_response3, headers: {})
 
       json_response4 = File.read("spec/fixtures/user_search_response2.json")
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1/find_friends?distance=")
-      .to_return(status: 200, body: json_response4, headers: {})
-
+        .to_return(status: 200, body: json_response4, headers: {})
 
       visit root_path
 
@@ -48,8 +47,6 @@ RSpec.describe "User Show Page" do
       expect(page).to have_content("self help books")
       click_on "Accept"
       expect(page).to_not have_content("Karl")
-      save_and_open_page
     end
   end
 end
-
