@@ -70,10 +70,5 @@ RSpec.describe "Get all events" do
       click_link("View My Dashboard")
       expect(current_path).to eq(user_path(1))
     end
-
-    xit "displays link to Create Event" do
-      click_link("Create Event")
-      expect(current_path).to eq(new_event_path)
-    end
   end
 end
