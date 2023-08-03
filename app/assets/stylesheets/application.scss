@@ -1,5 +1,16 @@
 @import 'bootstrap';
 
+
+.navbar-toggler {
+  z-index: 1000; /* Ensure the "Menu" button is above other elements */
+  position: relative; /* Add position relative to allow z-index to work */
+}
+
+.navbar-nav {
+  z-index: 999; /* Ensure the links are clickable even when the "Menu" button is active */
+  position: relative; /* Add position relative to allow z-index to work */
+}
+
 .logo {
   max-width: 100px; /* Set a maximum width for the logo if necessary */
   justify-content: left;

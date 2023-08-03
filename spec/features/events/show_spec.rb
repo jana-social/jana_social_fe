@@ -22,12 +22,6 @@ RSpec.describe "Get one event", type: :feature do
     stub_request(:get, "http://localhost:3000/api/v1/events")
       .to_return(status: 200, body: json_response_events, headers: {})
 
-    # visit root_path
-
-    # fill_in :email, with: "stefanie@jaskolski-sanford.example"
-    # fill_in :password, with: "test"
-    # click_on "Log In"
-
     visit "/events/1"
 
     expect(page).to have_content("Casey's Sweet Quiet Gathering")
