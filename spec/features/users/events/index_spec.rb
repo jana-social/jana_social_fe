@@ -50,9 +50,9 @@ RSpec.describe "User/Events Index Page" do
       end
 
       expect(page).to have_link("Casey's Sweet Quiet Gathering")
-      # click_link "Casey's Sweet Quiet Gathering"
+      click_link "Casey's Sweet Quiet Gathering"
       
-      # expect(current_path).to eq(event_path(1))
+      expect(current_path).to eq(user_event_path(1, 1))
     end
   end
 
@@ -69,9 +69,9 @@ RSpec.describe "User/Events Index Page" do
       end
 
       expect(page).to have_link("Casey's Sweet Loud Gathering")
-      # click_link "Casey's Sweet Loud Gathering"
+      click_link "Casey's Sweet Loud Gathering"
 
-      # expect(current_path).to eq(event(2))
+      expect(current_path).to eq(event_path(1))
     end
   end
 
