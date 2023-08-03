@@ -36,7 +36,7 @@ class RenderService
   end
 
   def friend_status(user_id, friend_id, status)
-    friend_post_url("/api/v1/friendships/", { user_id: user_id, friend_id: friend_id, status: status } )
+    friend_post_url("/api/v1/friendships/", { user_id: user_id, friend_id: friend_id, status: status })
   end
 
   def create_event(user_id, params)
@@ -45,10 +45,6 @@ class RenderService
 
   def update_event(user_id, event_id, params)
     patch_url("/api/v1/users/#{user_id}/events/#{event_id}", { title: params[:title], description: params[:description], street_address: "#{params[:street_address]}, #{params[:city]}, #{params[:state]}", zipcode: params[:zipcode], date_time: params[:date_time], private_status: params[:private] })
-  end
-
-  def destroy_event(user_id, event_id)
-    delete_url("/api/v1/users/#{user_id}/events/#{event_id}")
   end
 
   def get_url(url)
@@ -74,8 +70,6 @@ class RenderService
   def friend_post_url(url, params)
     conn.post(url, params)
   end
-
-
 
   def conn
     ## Alway comment this in before pushing to production

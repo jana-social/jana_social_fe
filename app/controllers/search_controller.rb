@@ -12,14 +12,12 @@ class SearchController < ApplicationController
     @users = UserFacade.new.searched_users(session[:user_id], params[:radius])
   end
 
-private
+  private
 
   def verify_login
-    if !session[:user_id]
-      redirect_to login_path
-      flash[:error] = "Login to Search"
-    end
+    return if session[:user_id]
+
+    redirect_to login_path
+    flash[:error] = "Login to Search"
   end
 end
-
-

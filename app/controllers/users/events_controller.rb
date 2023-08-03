@@ -16,12 +16,10 @@ class Users::EventsController < ApplicationController
   end
 
   def destroy
-    EventsFacade.new.delete_an_event(params[:user_id], params[:event_id])
-    redirect_to user_events_path(session[:user_id])
+
   end
 
   def show
-
   end
 
   private
