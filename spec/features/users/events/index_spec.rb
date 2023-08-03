@@ -34,10 +34,10 @@ RSpec.describe "User/Events Index Page" do
       fill_in :password, with: "test"
       click_on "Log In"
       
+      visit user_events_path(1)
   end
   describe "hosting" do
     it "should return events that I am hosting" do
-      visit user_events_path(1)
       
       expect(current_path).to eq(user_events_path(1))
 
@@ -72,7 +72,16 @@ RSpec.describe "User/Events Index Page" do
       # click_link "Casey's Sweet Loud Gathering"
 
       # expect(current_path).to eq(event(2))
-      # save_and_open_page
+    end
+  end
+
+  describe "links in user events index" do
+    it "should have links to create a new event" do
+      expect(page).to have_link("Create New Event")
+      # click_link "Create New Event"
+
+      # expect(current_path).to eq(oauth_path)
+      # cannot test yet, waiting on oauth
     end
   end
 end
