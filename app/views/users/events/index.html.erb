@@ -49,7 +49,7 @@
             <ul>
               <% @hosting.each do |event| %>
                 <li>
-                  Title: <strong><%= link_to event.title, event_path(event) %></strong><br>
+                  Title: <strong><%= link_to event.title, user_event_path(current_user, event.id) %></strong><br>
                   <%= event.date_time %>
                 </li>
               <% end %>
@@ -64,7 +64,7 @@
             <ul>
               Title: <% @attending.each do |event| %>
                 <li>
-                  <strong><%= link_to event.title, event_path(event) %></strong>
+                  <strong><%= link_to event.title, event_path(event.id) %></strong>
                   <%= event.date_time %>
                 </li>
               <% end %>
