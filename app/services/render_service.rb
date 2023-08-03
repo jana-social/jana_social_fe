@@ -39,6 +39,10 @@ class RenderService
     friend_post_url("/api/v1/friendships/", { user_id: user_id, friend_id: friend_id, status: status })
   end
 
+  def friends(user_id)
+    get_url("/api/v1/users/#{user_id}/friendships")
+  end
+
   def create_event(user_id, params)
     post_url("/api/v1/users/#{user_id}/events", { title: params[:title], description: params[:description], street_address: "#{params[:street_address]}, #{params[:city]}, #{params[:state]}", zipcode: params[:zipcode], date_time: params[:date_time], private_status: params[:private] })
   end
