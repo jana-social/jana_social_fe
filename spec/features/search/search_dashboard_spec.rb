@@ -35,8 +35,8 @@ RSpec.describe "Search" do
       user_id = 1
 
       json_response2 = File.read("spec/fixtures/user_search_response.json")
-      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}/find_friends?distance=#{distance}").
-        to_return(status: 200, body: json_response2, headers: {})
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}/find_friends?distance=#{distance}")
+        .to_return(status: 200, body: json_response2, headers: {})
 
       fill_in "Search radius (miles)", with: distance
       click_on "Search"
