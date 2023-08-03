@@ -47,6 +47,20 @@ class RenderService
     patch_url("/api/v1/users/#{user_id}/events/#{event_id}", { title: params[:title], description: params[:description], street_address: "#{params[:street_address]}, #{params[:city]}, #{params[:state]}", zipcode: params[:zipcode], date_time: params[:date_time], private_status: params[:private] })
   end
 
+  def create_user(_url, params)
+    post_url("/api/v1/users/", params)
+  end
+
+  def destroy_event(user_id, event_id)
+    delete_url("/api/v1/users/#{user_id}/events/#{event_id}")
+  end
+
+  private
+  def delete_url(url)
+    response = conn.delete(url)
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
   def get_url(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
@@ -59,11 +73,6 @@ class RenderService
 
   def post_url(url, params)
     response = conn.post(url, params)
-    JSON.parse(response.body, symbolize_names: true)
-  end
-
-  def delete_url(url)
-    response = conn.delete(url)
     JSON.parse(response.body, symbolize_names: true)
   end
 
