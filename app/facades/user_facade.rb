@@ -11,7 +11,6 @@ class UserFacade
 
   def authenticate(email, password)
     json = service.authenticate_with(email, password)
-
     @user = (User.new(json[:data]) if json.key?(:data))
   end
 

@@ -395,4 +395,28 @@ RSpec.describe RenderService do
       expect(attributes[:host]).to be_a(Integer)
     end
   end
+
+    describe "#user_search" do
+      it "Returns Users within Radius" do
+        json_response = File.read("spec/fixtures/user_search_response.json")
+        stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1/find_friends?distance=20")
+          .to_return(status: 200, body: json_response)
+
+        users = RenderService.new.user_search(1, 20)
+
+        expect(users).to be_a(Hash)
+
+        users[:data].each do |user|
+          expect(user[:id]).to be_a(String)
+          expect(user[:type]).to be_a(String)
+          expect(user[:attributes]).to be_a(Hash)
+          attributes = user[:attributes]
+          expect(attributes[:username]).to be_a(String)
+          expect(attributes[:bio]).to be_a(String)
+          expect(attributes[:likes]).to be_a(String)
+          expect(attributes[:dislikes]).to be_a(String)
+          expect(attributes[:profile_image_link]).to be_a(String)
+        end
+      end
+  end
 end
