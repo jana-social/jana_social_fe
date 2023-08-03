@@ -9,7 +9,7 @@
         "street_address": "5479 William Way, East Sonnyhaven, LA",
         "zipcode": "63637",
         "date_time": "8-17-23, 5:25 PM",
-        "private": true,
+        "private_status": true,
         "host": "Isabelle Stuart",
         "user_id": 186
       }
@@ -23,7 +23,7 @@
         "street_address": "5479 William Way, Sonnyhaven, CO",
         "zipcode": "84674",
         "date_time": "10-1-23, 6:00 PM",
-        "private": false,
+        "private_status": false,
         "host": "Joey Jospeh Mariella",
         "user_id": 17
       }

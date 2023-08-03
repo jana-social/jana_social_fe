@@ -11,7 +11,6 @@ class UserFacade
 
   def authenticate(email, password)
     json = service.authenticate_with(email, password)
-
     @user = (User.new(json[:data]) if json.key?(:data))
   end
 
@@ -20,6 +19,18 @@ class UserFacade
     json[:data].map do |details|
       UserSearch.new(details)
     end
+  end
+
+  def friends(user_id)
+    json = service.friends(user_id)
+    json[:data].map do |details|
+      UserSearch.new(details)
+    end
+  end
+
+  def create_user(user_params)
+    json = service.create_user("/api/v1/users/", user_params)
+    @user = User.new(json[:data])
   end
 
   private

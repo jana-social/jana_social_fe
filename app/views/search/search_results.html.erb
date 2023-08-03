@@ -1,34 +1,40 @@
+<%= "Search Results" %>
+
 <html>
 <head>
   <title>Search Results</title>
   <style>
-    body {
+    .content-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh; /* Ensure the body takes up the full height of the viewport */
+      height: 100vh;
     }
-
-    h1 {
-      margin-bottom: 20px;
-    }
-
-    /* Add any other styling you need for the map and the form */
   </style>
 </head>
-  <body>
-    <h3> Search Results </h3>
-
+<body>
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+            <h1 class="masthead-heading mb-0">Jana Social</h1>
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+        </div>
+    </header>
+  <div class="content-container">
       <ul>
       <% @users.each do |user| %>
         <li>Username: <%= link_to user.username, search_user_path(user.id) %></li>
-        </br>
+        <br>
         <li>Likes: <%= user.likes %></li>
-        </br>
-        </br>
+        <br>
+        <br>
       <% end %>
       </ul>
+  </div>
 
-  </body>
+</body>
 </html>

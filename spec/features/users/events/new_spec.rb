@@ -1,8 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "New Event Form" do
   describe "Create a new event form" do
-
     it "redirects to Oauth authentication page" do
       hosting_response_event = File.read("spec/fixtures/get_hosting_events.json")
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1/events/hosting")
@@ -41,8 +40,18 @@ RSpec.describe "New Event Form" do
       expect(page).to have_link("Create New Event")
     end
 
-
     it "Displays for fields and buttons" do
+      json_response = File.read("spec/fixtures/get_one_event.json")
+      json_response_user = File.read("spec/fixtures/user.json")
+
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/events/")
+        .to_return(status: 200, body: json_response, headers: {})
+
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1")
+        .to_return(status: 200, body: json_response_user)
+
+      stub_request(:post, "https://jana-social-be.onrender.com/api/v1/users/1/events")
+        .to_return(status: 200, body: json_response)
 
       visit new_user_event_path(1)
 
@@ -71,9 +80,6 @@ RSpec.describe "New Event Form" do
       expect(page).to have_content("Private")
 
       expect(page).to have_button("Create Event")
-
     end
   end
 end
-
-# get "/users/:id/events/oauth", to: "events#oauth", as: :oauth
