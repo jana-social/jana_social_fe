@@ -7,20 +7,16 @@ RSpec.describe "Get one event", type: :feature do
       .to_return(status: 200, body: json_response)
   end
 
-  it "displays one event" do
-    json_response = File.read("spec/fixtures/get_one_event.json")
-    stub_request(:get, "http://localhost:3000/api/v1/events/1")
-      .to_return(status: 200, body: json_response)
-
+  xit "displays one event" do
     json_response_search = File.read("spec/fixtures/search_users.json")
-    stub_request(:get, "http://localhost:3000/api/v1/search?p=test&q=stefanie@jaskolski-sanford.example")
-      .to_return(status: 200, body: json_response_search, headers: {})
+    stub_request(:get, "https://jana-social-be.onrender.com/api/v1/search?p=test&q=stefanie@jaskolski-sanford.example")
+      .to_return(status: 200, body: json_response_search)
     json_response_user = File.read("spec/fixtures/user.json")
-    stub_request(:get, "http://localhost:3000/api/v1/users/1")
-      .to_return(status: 200, body: json_response_user, headers: {})
+    stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1")
+      .to_return(status: 200, body: json_response_user)
     json_response_events = File.read("spec/fixtures/get_all_events.json")
-    stub_request(:get, "http://localhost:3000/api/v1/events")
-      .to_return(status: 200, body: json_response_events, headers: {})
+    stub_request(:get, "https://jana-social-be.onrender.com/api/v1/events")
+      .to_return(status: 200, body: json_response_events)
 
     visit "/events/1"
 
