@@ -51,7 +51,15 @@ class RenderService
     post_url("/api/v1/users/", params)
   end
 
+  def destroy_event(user_id, event_id)
+    delete_url("/api/v1/users/#{user_id}/events/#{event_id}")
+  end
+
   private
+  def delete_url(url)
+    response = conn.delete(url)
+    JSON.parse(response.body, symbolize_names: true)
+  end
 
   def get_url(url)
     response = conn.get(url)
