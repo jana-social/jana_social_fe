@@ -17,7 +17,26 @@ class Users::EventsController < ApplicationController
 
   def update
     EventsFacade.new.update_event(params[:user_id], params[:event_id], event_params)
-    redirect_to user_events_path
+    redirect_to user_events_path(session[:user_id])
+  end
+
+  def create
+    user = session[:user_id]
+    event_object = EventsFacade.new.create_event(user, event_params)
+
+    client = Signet::OAuth2::Client.new(client_params)
+    client.update!(session[:authorization])
+
+    service = Google::Apis::CalendarV3::CalendarService.new
+    service.authorization = client
+    event = Google::Apis::CalendarV3::Event.new
+
+    event.start = params[:date_time]
+    event.summary = params[:title]
+
+    service.insert_event(event_object[:data][0][:id], event)
+
+    redirect_to user_events_path(user)
   end
 
   def create
@@ -40,9 +59,8 @@ class Users::EventsController < ApplicationController
   end
 
   def destroy
-  end
-
-  def show
+    EventsFacade.new.delete_an_event(session[:user_id], params[:event_id])
+    redirect_to user_events_path(session[:user_id])
   end
 
   private

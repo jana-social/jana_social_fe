@@ -15,17 +15,18 @@
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading mb-0"><%= @user.username %>'s Dashboard</h1>
+                <%= button_to "Find New Friends", search_dashboard_path, method: :get %>
+<h1 class="masthead-heading mb-0"><%= @user.username %>'s Dashboard</h1>
                 <h2>Username: <%= @user.username %></h2>
                 <p>Zipcode: <%= @user.zipcode %></p>
                 <p>Bio: <%= @user.bio %></p>
                 <p>What I like: <%= @user.likes %></p>
                 <p>What I try to stay away from: <%= @user.dislikes %></p>
                 <p>Profile Picture: <img src="<%= @user.photo_url %>" class="img-thumbnail"></p>
-                    <div class=page-link><%= link_to "Update My Profile Photo", edit_user_path(current_user) %></div>
+                <div class=page-link><%= link_to "Update My Profile Photo", edit_user_path(current_user) %></div>
             </div>
         </header>
-       <footer class="footer text-center">
+        <footer class="footer text-center">
             <div class="container">
                 <div class="row">
                     <!-- Footer Location-->
@@ -47,4 +48,6 @@
                     </div>
                 </div>
             </div>
+        </footer>
+    </body>
 </html>

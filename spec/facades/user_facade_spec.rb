@@ -28,7 +28,7 @@ RSpec.describe UserFacade do
     end
 
     describe "::find_user" do
-      it "returns a list of all users" do
+      it "returns a list of all users" do # is this all or just one user?
         json_response = File.read("spec/fixtures/user.json")
         stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1")
           .to_return(status: 200, body: json_response)
@@ -42,6 +42,62 @@ RSpec.describe UserFacade do
         expect(result.likes).to be_a(String)
         expect(result.photo_url).to be_a(String)
         expect(result.street_address).to be_a(String)
+        expect(result.username).to be_a(String)
+        expect(result.zipcode).to be_a(String)
+      end
+    end
+
+    describe "::searched_users" do
+      it "returns users within search radius of user" do
+        user_id = 1
+        distance = 500
+
+        json_response = File.read("spec/fixtures/user_search_response.json")
+        stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}/find_friends?distance=#{distance}")
+          .to_return(status: 200, body: json_response, headers: {})
+
+        results = UserFacade.new.searched_users(1, 500)
+
+        results.each do |result|
+          expect(result).to be_a(UserSearch)
+          expect(result.bio).to be_a(String)
+          expect(result.dislikes).to be_a(String)
+          expect(result.likes).to be_a(String)
+          expect(result.photo_url).to be_a(String)
+          expect(result.username).to be_a(String)
+        end
+      end
+    end
+
+    describe "::create_user" do
+      it "returns a created user" do
+        user_params = {
+          username: "test3",
+          email: "test3@test.com",
+          password: "test",
+          zipcode: "80301"
+        }
+        response = File.read("spec/fixtures/created_user.json")
+        stub_request(:post, "https://jana-social-be.onrender.com/api/v1/users/")
+          .with(
+            body: { "email"=>"test3@test.com", "password"=>"test", "username"=>"test3", "zipcode"=>"80301" },
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+              "Content-Type" => "application/x-www-form-urlencoded",
+              "User-Agent" => "Faraday v2.7.10"
+            }
+          )
+          .to_return(status: 200, body: response, headers: {})
+        result = UserFacade.new.create_user(user_params)
+
+        expect(result).to be_a(User)
+        expect(result.bio).to be(nil)
+        expect(result.dislikes).to be(nil)
+        expect(result.email).to be_a(String)
+        expect(result.likes).to be(nil)
+        expect(result.photo_url).to be_a(String)
+        expect(result.street_address).to be(nil)
         expect(result.username).to be_a(String)
         expect(result.zipcode).to be_a(String)
       end

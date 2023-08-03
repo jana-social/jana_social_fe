@@ -1,0 +1,18 @@
+{
+  "data": {
+      "id": "8",
+      "type": "user",
+      "attributes": {
+          "username": "test3",
+          "email": "test3@test.com",
+          "zipcode": "80301",
+          "street_address": null,
+          "bio": null,
+          "likes": null,
+          "dislikes": null,
+          "profile_image_link": "https://images.unsplash.com/photo-1688895314096-17afac1f03d3?ixid=M3w0ODE0Nzl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTEwMDYwMjV8&ixlib=rb-4.0.3",
+          "latitude": 40.049878042947206,
+          "longitude": -105.19837226493301
+      }
+  }
+}
