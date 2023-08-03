@@ -7,10 +7,10 @@ RSpec.describe "Delete Event" do
     json_response_user = File.read("spec/fixtures/user.json")
     event_response = File.read("spec/fixtures/get_one_event.json")
     events_response = File.read("spec/fixtures/get_all_events.json")
-    authenticated_user = File.read("spec/fixtures/authenticated_user.json")
+    # authenticated_user = File.read("spec/fixtures/authenticated_user.json")
 
-    stub_request(:get, "https://jana-social-be.onrender.com/api/v1/search?p=test&q=stefanie@jaskolski-sanford.example")
-      .to_return(status: 200, body: authenticated_user)
+    stub_request(:get, "https://jana-social-be.onrender.com/api/v1/search?p=test&q=DawgTown@gmail.com")
+    #   .to_return(status: 200, body: authenticated_user)
 
     stub_request(:get, "https://jana-social-be.onrender.com/api/v1/events/1")
       .to_return(status: 200, body: event_response)
@@ -28,12 +28,12 @@ RSpec.describe "Delete Event" do
       .to_return(status: 200, body: events_response)
 
 
-    # visit root_path
+    visit root_path
 
-    # fill_in :email, with: "stefanie@jaskolski-sanford.example"
-    # fill_in :password, with: "test"
-    # click_on "Log In"
-    # save_and_open_page
+    fill_in :email, with: "DawgTown@gmail.com"
+    fill_in :password, with: "test"
+    click_on "Log In"
+    save_and_open_page
     # click_on "My Events"
 
     visit user_events_path(1)
