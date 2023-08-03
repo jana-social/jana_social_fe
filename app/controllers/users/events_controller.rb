@@ -39,25 +39,6 @@ class Users::EventsController < ApplicationController
     redirect_to user_events_path(user)
   end
 
-  def create
-    user = session[:user_id]
-    event_object = EventsFacade.new.create_event(user, event_params)
-
-    client = Signet::OAuth2::Client.new(client_params)
-    client.update!(session[:authorization])
-
-    service = Google::Apis::CalendarV3::CalendarService.new
-    service.authorization = client
-    event = Google::Apis::CalendarV3::Event.new
-
-    event.start = params[:date_time]
-    event.summary = params[:title]
-
-    service.insert_event(event_object[:data][0][:id], event)
-
-    redirect_to user_events_path(user)
-  end
-
   def destroy
     EventsFacade.new.delete_an_event(session[:user_id], params[:event_id])
     redirect_to user_events_path(session[:user_id])
