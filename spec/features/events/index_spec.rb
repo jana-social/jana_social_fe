@@ -12,7 +12,6 @@ RSpec.describe "Get all events" do
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/events/1")
         .to_return(status: 200, body: event_response)
 
-
       user_response = File.read("spec/fixtures/user.json")
       authenticated_user = File.read("spec/fixtures/authenticated_user.json")
 
