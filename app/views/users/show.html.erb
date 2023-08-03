@@ -1,21 +1,51 @@
-<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<%= button_to "Find New Friends", search_dashboard_path, method: :get %>
-<h1><%= @user.username %>'s Dashboard</h1>
-<h2>Username: <%= @user.username %></h2>
-<p>Zipcode: <%= @user.zipcode %></p>
-<p>Bio: <%= @user.bio %></p>
-<p>What I like: <%= @user.likes %></p>
-<p>What I dislike: <%= @user.dislikes %></p>
-<p>Profile Picture: <%= @user.photo_url %></p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Jana Social</title>
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <!-- Fonts CSS-->
+    </head>
+    <body id="page-top">
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Heading-->
+                <%= button_to "Find New Friends", search_dashboard_path, method: :get %>
+<h1 class="masthead-heading mb-0"><%= @user.username %>'s Dashboard</h1>
+                <h2>Username: <%= @user.username %></h2>
+                <p>Zipcode: <%= @user.zipcode %></p>
+                <p>Bio: <%= @user.bio %></p>
+                <p>What I like: <%= @user.likes %></p>
+                <p>What I try to stay away from: <%= @user.dislikes %></p>
+                <p>Profile Picture: <img src="<%= @user.photo_url %>" class="img-thumbnail"></p>
+                    <div class=page-link><%= link_to "Update My Profile Photo", edit_user_path(current_user) %></div>
+            </div>
+        </header>
+       <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="mb-4">Messages</h4>
+                        <p class="pre-wrap lead mb-0"><%= link_to "My Messages", user_rooms_path(current_user) %></p>
+                    </div>
+                    <!-- Footer Social Icons-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="mb-4">Events</h4>
+                        <p class="pre-wrap lead mb-0"><%= link_to "My Events", user_events_path(current_user) %></p>
+                        <p class="pre-wrap lead mb-0"><%= link_to "Discover New Events", events_path %></p>
+                    </div>
+                    <!-- Footer About Text-->
+                    <div class="col-lg-4">
+                        <h4 class="mb-4">Friends</h4>
+                        <p class="pre-wrap lead mb-0"><%= link_to "Discover New Friends", search_dashboard_path %></p>
+                        <p class="pre-wrap lead mb-0"><%= link_to "My Friends", user_friends_path(current_user) %></p>
+                    </div>
+                </div>
+            </div>
+</html>

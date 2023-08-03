@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe EventsFacade do
   describe "class methods" do
@@ -21,6 +21,24 @@ RSpec.describe EventsFacade do
           expect(result.private_status).to be_a(String) # change to boolean
           expect(result.host).to be_a(String)
         end
+      end
+    end
+    describe "::get_one_event" do
+      it "returns one event" do
+        json_response = File.read("spec/fixtures/get_one_event.json")
+        stub_request(:get, "https://jana-social-be.onrender.com/api/v1/events/1")
+          .to_return(status: 200, body: json_response)
+
+        result = EventsFacade.new.get_one_event(1)
+
+        expect(result).to be_a(Event)
+        expect(result.title).to be_a(String)
+        expect(result.description).to be_a(String)
+        expect(result.street_address).to be_a(String)
+        expect(result.zipcode).to be_a(String)
+        expect(result.date_time).to be_a(String)
+        expect(result.private_status).to be_a(String) # change to boolean
+        expect(result.host).to be_a(String)
       end
     end
   end

@@ -6,13 +6,12 @@ Rails.application.routes.draw do
   root "application#welcome"
 
   resources :users do
-    resources :events, only: %i[index show create new]
-    resources :rooms
-    resources :friends, only: %i[index]
+      resources :events, only: %i[index show create new], controller: 'users/events'
+      resources :rooms
+      resources :friends, only: %i[index]
   end
 
   resources :events, only: %i[index show]
-
   resources :search, only: %i[index create]
   namespace :search do
     resources :users, only: %i[show]
@@ -27,4 +26,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login_form'
   post '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout', as: :logout
+  get '/oauth', to: 'goog_sesh#login'
+  get '/callback', to: 'goog_sesh#callback'
+  get '/users/:user_id/events/:event_id/edit', to: "users/events#edit", as: :event_edit
+  patch '/users/:user_id/events/:event_id', to: "users/events#update", as: :event_update
 end

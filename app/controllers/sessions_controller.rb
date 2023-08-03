@@ -3,8 +3,8 @@ class SessionsController < ApplicationController
 
   def login
     user = UserFacade.new.authenticate(params[:email], params[:password])
-    if user == nil
-      flash[:error] = 'Sorry, your credentials are invalid.'
+    if user.nil?
+      flash[:error] = "Sorry, your credentials are invalid."
       redirect_to root_path
     else
       session[:user_id] = user.id

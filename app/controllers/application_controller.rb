@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    # @_current_user ||= UserFacade.new.find(session[:user_id]) if session[:user_id]
+    ## Question: How should we memoize with calling to the backend?
+    # @_current_user ||= User.find(session[:user_id]) if session[:user_id]
     @_current_user = session[:user_id]
   end
 
@@ -12,6 +13,6 @@ class ApplicationController < ActionController::Base
   private
 
   def error_message(errors)
-    errors.full_messages.join(', ')
+    errors.full_messages.join(", ")
   end
 end
