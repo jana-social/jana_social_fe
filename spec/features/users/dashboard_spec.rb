@@ -35,7 +35,7 @@ RSpec.describe "/dashboard", type: :feature do
       expect(page).to have_link("My Events", href: user_events_path(user.id))
       expect(page).to have_link("Discover New Friends", href: search_dashboard_path)
       expect(page).to have_link("My Friends", href: user_friends_path(user.id))
-      expect(page).to have_link("Update My Profile Photo", href: edit_user_path(user.id))
+      expect(page).to have_link("Update My Profile", href: edit_user_path(user.id))
     end
   end
 end

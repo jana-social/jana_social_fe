@@ -43,6 +43,12 @@ class RenderService
     patch_url("/api/v1/users/#{user_id}/events/#{event_id}", { title: params[:title], description: params[:description], street_address: "#{params[:street_address]}, #{params[:city]}, #{params[:state]}", zipcode: params[:zipcode], date_time: params[:date_time], private_status: params[:private] })
   end
 
+  def upload_photo(user_id, filename)
+    # require 'pry'; binding.pry
+    post_url("/api/v1/upload", { user_id: user_id, filename: filename })
+    # post_url("/api/v1/upload", { user_id: params[:id], filename: params[:file].original_filename })
+  end
+
   def get_url(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
@@ -60,8 +66,8 @@ class RenderService
 
   def conn
     ## Alway comment this in before pushing to production
-    Faraday.new(url: "https://jana-social-be.onrender.com")
-    # Faraday.new(url: "http://localhost:3000")
+    # Faraday.new(url: "https://jana-social-be.onrender.com")
+    Faraday.new(url: "http://localhost:3000")
     # change to http://localhost:3000 for local testing if needed
   end
 end
