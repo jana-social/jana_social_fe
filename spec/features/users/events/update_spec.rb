@@ -1,29 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Update Event Form" do
-  it "redirects to Oauth authentication page" do
-    user_id = 1
-    json_response_hosting = File.read("spec/fixtures/get_hosting_events.json")
-    json_response_attending = File.read("spec/fixtures/get_attending_events.json")
-    json_response_user = File.read("spec/fixtures/user.json")
+  it "Shows edit form" do
+    json_response_event = File.read("spec/fixtures/get_one_event.json")
 
-    stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}/events/hosting")
-    .to_return(status: 200, body: json_response_hosting)
+    stub_request(:get, "http://localhost:3000/api/v1/events/1")
+      .to_return(status: 200, body: json_response_event, headers: {})
 
-    stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}/events/attending")
-    .to_return(status: 200, body: json_response_attending)
-
-    stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/#{user_id}")
-    .to_return(status: 200, body: json_response_user)
-
-    visit edit_user_event(1)
-  end
-
-
-  it "Displays for fields and buttons" do
-
-    visit new_user_event_path(1)
-
+    visit event_edit_path(1, 1)
     expect(page).to have_field(:title)
     expect(page).to have_content("Title")
 
@@ -48,8 +32,6 @@ RSpec.describe "Update Event Form" do
     expect(page).to have_unchecked_field(:private)
     expect(page).to have_content("Private")
 
-    expect(page).to have_button("Create Event")
-
+    expect(page).to have_button("Update Event")
   end
-end
 end
