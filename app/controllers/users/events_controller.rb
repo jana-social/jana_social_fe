@@ -20,7 +20,8 @@ class Users::EventsController < ApplicationController
   end
 
   def show
-
+    @event = EventsFacade.new.get_one_event(params[:event_id])
+    @user = params[:user_id]
   end
 
   private

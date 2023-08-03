@@ -29,6 +29,7 @@ RSpec.describe "User/Events Index Page" do
     users_response = File.read("spec/fixtures/user.json")
     stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1")
       .to_return(status: 200, body: users_response)
+
       visit root_path
       fill_in :email, with: "stefanie@jaskolski-sanford.example"
       fill_in :password, with: "test"
@@ -50,9 +51,9 @@ RSpec.describe "User/Events Index Page" do
       end
 
       expect(page).to have_link("Casey's Sweet Quiet Gathering")
-      # click_link "Casey's Sweet Quiet Gathering"
+      click_link "Casey's Sweet Quiet Gathering"
       
-      # expect(current_path).to eq(event_path(1))
+      expect(current_path).to eq(user_event_path(1,1))
     end
   end
 
@@ -69,9 +70,9 @@ RSpec.describe "User/Events Index Page" do
       end
 
       expect(page).to have_link("Casey's Sweet Loud Gathering")
-      # click_link "Casey's Sweet Loud Gathering"
+      click_link "Casey's Sweet Loud Gathering"
 
-      # expect(current_path).to eq(event(2))
+      expect(current_path).to eq(event_path(1))
     end
   end
 
