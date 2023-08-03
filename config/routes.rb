@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#logout', as: :logout
   get '/oauth', to: 'goog_sesh#login'
   get '/callback', to: 'goog_sesh#callback'
+  get '/users/:user_id/events/:event_id/edit', to: "users/events#edit", as: :event_edit
+  patch '/users/:user_id/events/:event_id/edit', to: "users/events#update", as: :event_update
 end

@@ -31,6 +31,10 @@ class EventsFacade
     end
   end
 
+  def update_event(user_id, event_id, event_params)
+    service.update_event(user_id, event_id, event_params)
+  end
+
   def service
     RenderService.new
   end

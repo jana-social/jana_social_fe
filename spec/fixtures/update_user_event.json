@@ -1,0 +1,13 @@
+{
+  "id": "1",
+  "type": "event",
+  "attributes": {
+    "title": "Updated Gathering",
+    "description": "Updated Movie",
+    "street_address": "5479 William Way, East Sonnyhaven, LA",
+    "zipcode": "63637",
+    "date_time": "8-17-23, 5:25 PM",
+    "private": true,
+    "host": 1
+  }
+}
