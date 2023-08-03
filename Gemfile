@@ -52,7 +52,6 @@ gem 'bootstrap', '~> 5.3.0.alpha3'
 gem 'bootstrap_form'
 gem 'faraday'
 gem 'figaro'
-gem "bootstrap_form"
 gem 'google-api-client', require: 'google/apis/calendar_v3'
 
 group :development, :test do

@@ -12,7 +12,6 @@ RSpec.describe "Get all events" do
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/events/1")
         .to_return(status: 200, body: event_response)
 
-
       user_response = File.read("spec/fixtures/user.json")
       authenticated_user = File.read("spec/fixtures/authenticated_user.json")
 
@@ -69,11 +68,6 @@ RSpec.describe "Get all events" do
       expect(page).to have_link("View My Dashboard")
       click_link("View My Dashboard")
       expect(current_path).to eq(user_path(1))
-    end
-
-    xit "displays link to Create Event" do
-      click_link("Create Event")
-      expect(current_path).to eq(new_event_path)
     end
   end
 end

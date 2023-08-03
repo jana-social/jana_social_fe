@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
   root "application#welcome"
+  # delete '/users/:id/events/:id', to: "users/events#destroy", as: :event_destroy
 
   resources :users, only: %i[index show create edit update]
   
   resources :users do
-      resources :events, only: %i[index show create new], controller: 'users/events'
+      resources :events, only: %i[index show create new destroy], controller: 'users/events'
       resources :rooms
       resources :friends, only: %i[index]
   end
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
   resources :events, only: %i[index show]
   resources :search, only: %i[index create]
   namespace :search do
-    resources :users, only: %i[show]
+    resources :users, only: %i[show create]
   end
 
   
@@ -39,4 +40,5 @@ Rails.application.routes.draw do
   get '/callback', to: 'goog_sesh#callback'
   get '/users/:user_id/events/:event_id/edit', to: "users/events#edit", as: :event_edit
   patch '/users/:user_id/events/:event_id', to: "users/events#update", as: :event_update
+  # delete '/users/:id/events/:id', to: "users/events#destroy", as: :event_destroy
 end

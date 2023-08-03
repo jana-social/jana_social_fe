@@ -17,6 +17,10 @@ class EventsFacade
     service.create_event(user, event_params)
   end
 
+  def delete_an_event(user_id, event_id)
+    service.destroy_event(user_id, event_id)
+  end
+
   def get_hosting(user)
     request = service.get_hosting_events(user)
     request[:data].map do |event|
