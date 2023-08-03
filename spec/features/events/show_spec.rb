@@ -18,10 +18,6 @@ RSpec.describe "Get one event", type: :feature do
     stub_request(:get, "https://jana-social-be.onrender.com/api/v1/events/1")
       .to_return(status: 200, body: event_response)
 
-    user_response = File.read("spec/fixtures/user.json")
-    stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1")
-      .to_return(status: 200, body: user_response)
-
     authenticated_user = File.read("spec/fixtures/authenticated_user.json")
     stub_request(:get, "https://jana-social-be.onrender.com/api/v1/search?p=test&q=stefanie@jaskolski-sanford.example")
       .to_return(status: 200, body: authenticated_user)
@@ -47,7 +43,7 @@ RSpec.describe "Get one event", type: :feature do
     expect(page).to have_content("8-17-23, 5:25 PM")
   end
 
-  it "displays buttons to My Events, and Back to all Events" do
+  it "displays buttons to My Events and Back to all Events" do
 
     expect(page).to have_link("My Events")
     click_link "My Events"
