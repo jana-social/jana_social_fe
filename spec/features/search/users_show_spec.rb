@@ -34,7 +34,6 @@ RSpec.describe "User Show Page" do
     end
 
     it "shows the user's info" do
-      save_and_open_page
       expect(page).to have_content("Karl")
       expect(page).to have_content("Where is my father")
       expect(page).to have_content("My father")
