@@ -18,7 +18,7 @@ class UserFacade
   def searched_users(user_id, radius)
     json = service.user_search(user_id, radius)
     json[:data].map do |details|
-      UserSearch.new(details[:attributes])
+      UserSearch.new(details)
     end
   end
 
