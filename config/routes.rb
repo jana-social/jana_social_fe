@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :events, only: %i[index show]
   resources :search, only: %i[index create]
   namespace :search do
-    resources :users, only: %i[show]
+    resources :users, only: %i[show create]
   end
 
   get "search_dashboard", to: "search#search_dashboard", as: :search_dashboard
