@@ -44,8 +44,7 @@ class RenderService
   end
 
   def upload_photo(user_id, filename)
-    # require 'pry'; binding.pry
-    post_url("/api/v1/upload", { user_id: user_id, filename: filename })
+    post_url("/api/v1/uploads", { user_id: user_id, filename: filename })
     # post_url("/api/v1/upload", { user_id: params[:id], filename: params[:file].original_filename })
   end
 
@@ -60,14 +59,14 @@ class RenderService
   end
 
   def post_url(url, params)
-    conn.post(url, params)
+    response = conn.post(url, params)
     JSON.parse(response.body, symbolize_names: true)
   end
 
   def conn
-    ## Alway comment this in before pushing to production
-    # Faraday.new(url: "https://jana-social-be.onrender.com")
-    Faraday.new(url: "http://localhost:3000")
+    ## Always comment this in before pushing to production
+    Faraday.new(url: "https://jana-social-be.onrender.com")
+    # Faraday.new(url: "http://localhost:3000")
     # change to http://localhost:3000 for local testing if needed
   end
 end

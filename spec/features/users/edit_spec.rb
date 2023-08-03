@@ -9,6 +9,10 @@ RSpec.describe "edit_user_path", type: :feature do
 
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1")
         .to_return(status: 200, body: json_response, headers: {})
+      
+      json_response_new = File.read("spec/fixtures/authenticated_user_2.json")
+      stub_request(:post, "https://jana-social-be.onrender.com/api/v1/uploads")
+        .to_return(status: 200, body: json_response_new, headers: {})
 
     data = 
     {

@@ -25,6 +25,7 @@ class UserFacade
   def send_photo(user_id, filename)
     json = service.upload_photo(user_id, filename)
     @user = User.new(json[:data])
+    # require 'pry'; binding.pry
   end
 
   private
