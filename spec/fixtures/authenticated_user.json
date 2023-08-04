@@ -1,28 +1,10 @@
-// {
-//   "data": {
-//       "id": "1",
-//       "type": "user",
-//       "attributes": {
-//           "username": "Sweet Bread",
-//           "email": "stefanie@jaskolski-sanford.example",
-//           "zipcode": "01417",
-//           "street_address": "13575 Lavonda Ways",
-//           "bio": "[\"Five dollar toast sriracha pop-up.\", \"Williamsburg austin mustache kombucha literally ennui pabst.\", \"Umami post-ironic direct trade.\", \"Sustainable diy park seitan pop-up selvage farm-to-table cold-pressed.\", \"Roof yolo blog.\"]",
-//           "likes": "Gentrify roof hoodie mlkshk skateboard.",
-//           "dislikes": "Lo-fi irony you probably haven't heard of them fingerstache tofu.",
-//           "profile_image_link": "http://cummings-murphy.test/kim_hoppe",
-//           "latitude": 9.191590386771395,
-//           "longitude": -29.227836572765966
-//       }
-//   }
-// }
 {
   "data": {
       "id": "1",
       "type": "user",
       "attributes": {
           "username": "Sweet Bread",
-          "email": "DawgTown@gmail.com",
+          "email": "stefanie@jaskolski-sanford.example",
           "zipcode": "01417",
           "street_address": "13575 Lavonda Ways",
           "bio": "[\"Five dollar toast sriracha pop-up.\", \"Williamsburg austin mustache kombucha literally ennui pabst.\", \"Umami post-ironic direct trade.\", \"Sustainable diy park seitan pop-up selvage farm-to-table cold-pressed.\", \"Roof yolo blog.\"]",

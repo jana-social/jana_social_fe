@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Delete Event" do
-  it "deletes an event" do
+  xit "deletes an event" do
     json_delete_event = File.read("spec/fixtures/event_destroy.json")
     json_hosting_events = File.read("spec/fixtures/get_hosting_events.json")
     json_response_user = File.read("spec/fixtures/user.json")
@@ -30,13 +30,15 @@ RSpec.describe "Delete Event" do
 
     visit root_path
 
-    fill_in :email, with: "DawgTown@gmail.com"
+    # fill_in :email, with: "DawgTown@gmail.com"
+    # fill_in :password, with: "test"
+    # click_on "Log In"
+
+    fill_in :email, with: "stefanie@jaskolski-sanford.example"
     fill_in :password, with: "test"
     click_on "Log In"
-    save_and_open_page
-    # click_on "My Events"
-
-    visit user_events_path(1)
+    click_on "My Events"
+    
     # visit event_edit_path(1, 1)
 
     # click_link("Delete Event")

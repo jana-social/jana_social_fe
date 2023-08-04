@@ -31,5 +31,4 @@ Rails.application.routes.draw do
   get '/callback', to: 'goog_sesh#callback'
   get '/users/:user_id/events/:event_id/edit', to: "users/events#edit", as: :event_edit
   patch '/users/:user_id/events/:event_id', to: "users/events#update", as: :event_update
-  # delete '/users/:id/events/:id', to: "users/events#destroy", as: :event_destroy
 end

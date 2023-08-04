@@ -33,11 +33,13 @@
       <div class="row justify-content-center">
         <div class="d-flex justify-content-center align-items-center">
           <p class="pre-wrap lead mb-0">
+
+
             <%= link_to "Delete Event", class: "btn btn-primary" %>
           </p>
           <span style="margin: 0 5px;"></span>
           <p class="pre-wrap lead mb-0">
-            <%= link_to "Update Event", class: "btn btn-primary" %>
+          <%= link_to "Update Event", event_edit_path(@user, @event), class: "btn btn-primary" %>
           </p>
         </div>
       </div>
