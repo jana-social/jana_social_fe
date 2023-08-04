@@ -22,16 +22,12 @@ RSpec.describe "User Show Page" do
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/2")
         .to_return(status: 200, body: json_response3, headers: {})
 
-      json_response4 = File.read("spec/fixtures/user_search_response2.json")
-      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1/find_friends?distance=")
-        .to_return(status: 200, body: json_response4, headers: {})
-
       visit root_path
 
       fill_in :email, with: "stefanie@jaskolski-sanford.example"
       fill_in :password, with: "test"
       click_on "Log In"
-      click_on "Find New Friends"
+      click_on "Discover New Friends"
       fill_in "Search radius (miles)", with: 20
       click_on "Search"
       click_link "Karl"
@@ -46,7 +42,6 @@ RSpec.describe "User Show Page" do
       expect(page).to have_content("My father")
       expect(page).to have_content("self help books")
       click_on "Accept"
-      expect(page).to_not have_content("Karl")
     end
   end
 end

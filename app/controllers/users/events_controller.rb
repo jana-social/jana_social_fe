@@ -5,6 +5,11 @@ class Users::EventsController < ApplicationController
     session[:user_id_event] = params[:user_id]
   end
 
+  def show
+    @event = EventsFacade.new.get_one_event(params[:id])
+    @user = params[:user_id]
+  end
+
   def new
     @event = EventsFacade.new.get_one_event(params[:event_id])
     @user = params[:user_id]
@@ -42,6 +47,8 @@ class Users::EventsController < ApplicationController
   def destroy
     EventsFacade.new.delete_an_event(session[:user_id], params[:event_id])
     redirect_to user_events_path(session[:user_id])
+    @event = EventsFacade.new.get_one_event(params[:event_id])
+    @user = params[:user_id]
   end
 
   private

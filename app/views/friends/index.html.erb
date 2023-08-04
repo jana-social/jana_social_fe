@@ -1,29 +1,41 @@
 <html>
 <head>
-  <title>My Friends</title>
+  <title>Static Map</title>
   <style>
-    body {
+    .content-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh; /* Ensure the body takes up the full height of the viewport */
+      height: 100vh;
     }
-
-    h1 {
-      margin-bottom: 20px;
-    }
-
-    /* Add any other styling you need for the map and the form */
   </style>
 </head>
 <body>
-<ul>
-  <% @friends.each do |friend| %>
-  <li><%= friend.username %></li>
-  <li><%= friend.bio %></li>
-  </br>
-  <% end %>
-</ul>
+  <header class="masthead bg-primary text-white text-center">
+    <div class="d-flex align-items-center justify-content-center flex-column" style="height: 20px;">
+      <h1 class="masthead-heading mb-0 text-center">Jana Social</h1>
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="content-container">
+    <ul>
+      <% if @friends.present? %>
+        <% @friends.each do |friend| %>
+          <li><%= friend.username %></li>
+          <li><%= friend.bio %></li>
+        <% end %>
+        <br>
+      <% else %>
+        <h2>No friends yet!</h2>
+      <% end %>
+    </ul>
+  </div>
+
 </body>
 </html>
