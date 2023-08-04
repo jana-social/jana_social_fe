@@ -1,11 +1,15 @@
 <h1> Jana Social </h1>
 
-[Render](https://jana-social-fe.onrender.com) <br>
-[Back End Repo](https://github.com/jana-social/jana_social) <br>
-[DB schema](https://erd.dbdesigner.net/designer/schema/1690390259-jana_social) <br>
-[Full team Miro board](https://miro.com/app/board/uXjVMz_g040=/) <br>
-[Users team Miro board](https://miro.com/app/board/uXjVMz5BkDM=/) <br>
-[Events team Miro board](https://miro.com/app/board/uXjVMz4nZmc=/)
+![Jana Social Logo](app/assets/images/janasocial.png)
+
+[Render Deployment](https://jana-social-fe.onrender.com) <br>
+[Back End Repository](https://github.com/jana-social/jana_social) <br>
+[DB Schema](https://erd.dbdesigner.net/designer/schema/1690390259-jana_social) <br>
+[Full Team Miro Board](https://miro.com/app/board/uXjVMz_g040=/) |
+[Users Team Miro Board](https://miro.com/app/board/uXjVMz5BkDM=/) |
+[Events Team Miro Board](https://miro.com/app/board/uXjVMz4nZmc=/)
+
+<hr>
 
 
 <h2> Teams </h2>
@@ -20,7 +24,7 @@
 <h3> Events Team </h3>
 
  - Jeff Nelson: [GitHub](https://github.com/jpnelson85) | [LinkedIn](https://www.linkedin.com/in/jeff-nelson-307aba45/)
- - Sarah Garlock: [GitHub](https://github.com/sarahgarlock) | [LinkedIn](https://www.linkedin.com/in/sarah-garlock-795855195/)
+ - Sarah Garlock: [GitHub](https://github.com/sarahgarlock) | [LinkedIn](https://www.linkedin.com/in/sarah-garlock/)
  - Jesse Thomas: [GitHub](https://github.com/jgthomas-12) | [LinkedIn](https://www.linkedin.com/in/jesse-g-thomas/)
  - Austin Woods: [GitHub](https://github.com/boomclear) | [LinkedIn](https://www.linkedin.com/in/austin-woods-1830aa195/)
 
@@ -31,61 +35,98 @@
  - Amy Spears: [GitHub](https://github.com/Amspears007) | [LinkedIn](https://www.linkedin.com/in/amy-marie-spears-900997105/)
  - Steven Stackhouse: [GitHub](https://github.com/stackmm) | [LinkedIn](https://www.linkedin.com/in/steven-stackhouse/)
 
+<hr>
 
-This endpoint will return all users within the specific distance input radius
+<h2>What is Jana Social?</h2>
 
-    Status: 200 OK
-    Description: Successful response with list of users where zipcode/address resides within radius of the distance typed in by the user typed in Returns users based on search distance.
-    Data Format: An array of user hash objects with keys "id", "type" and "attributes".
+Jana Social is an application for caregivers of adults with disabilities. It is a place for caregivers to connect with other caregivers, share stories, and find events in their area. Jana Social is a place for caregivers to find support and community. Users can create/join events, search for other users, and add friends. 
 
-  Status: 200 OK
-```json
-{
-  "data": [
-    {
-      "id": "1",
-      "type": "user",
-      "attributes": {
-        "username": "amyisfun",
-        "email": "am123@gmail.com",
-        "zipcode": "63637",
-        "bio": "Caretaker for 43 yo sister with learning disabilities",
-        "likes": "being outside",
-        "dislikes": "loud crowds",
-        "profile_image_link":"https://images.unsplash.com/photo-1543807535-eceef0bc6599?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
-      }
-    },
-     {
-      "id": "2",
-      "type": "user",
-      "attributes": {
-        "username": "LGisgreat",
-        "email": "LG123@gmail.com",
-        "zipcode": "63637",
-        "bio": "Caretaker for sister in mid thirties with learning disabilities",
-        "likes": "quiet activities",
-        "dislikes": "lots of people",
-        "profile_image_link":"https://images.unsplash.com/photo-1543807535-eceef0bc6599?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
-      }
-    }
-  ]
-}
+This project was created for the Turing School of Software and Design's Mod 3 Group Project. The project was built over the course of 12 days. We had three teams working on the project: Users, Events, and Location/Friends. Each team was split up between back end and front end. The back end teams were responsible for building out the API endpoints and the front end teams were responsible for building out the user interface.
+<hr>
+
+<h2>Getting Started</h2>
+
+<h3>Versions</h3>
+
+Ruby 3.2.2
+
+Rails 7.0.6
+
+<br>
+<h3>Installation</h3>
+
+Mapquest API Keys:[here](https://developer.mapquest.com/)
+
+<br>
+Clone this repository:
+
+Add Figaro to your Gemfile and bundle install:
+
+```ruby
+gem 'figaro'
 ```
-// a get request with :zipcode and :radius
-// I should get back an array of user objects
-// with this information attatched
-```json
-{"data":
-  [
-    {"id":"1",
-    "type":"user",
-    "attributes":
-      {
-        "username":"schroederJerde",
-        "bio":"Lorem ipsum dolor sit amet",
-        "likes":"consectetur adipiscing elit",
-        "dislikes":"sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        "profile_image_link":"https://images.unsplash.com/photo-1543807535-eceef0bc6599?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-      }
-    },
+`bundle install`
+
+Or install Figaro the easy way:
+
+```ruby
+$ bundle exec figaro install
 ```
+
+This creates a commented `config/application.yml` file and adds it to your `.gitignore`. Add your own configuration to this file and you're done!
+
+<h3>For local testing -</h3>
+
+- Clone Jana Social's [Back End Repository](https://github.com/jana-social/jana_social):
+
+- In the app/services/render_service.rb file, comment out the url to `Faraday.new(url: "https://jana-social-be.onrender.com")` and comment in `Faraday.new(url: "http://localhost:3000")`. *This is important for local testing.*
+
+- Run Back End Repo in server with localhost:3000
+
+- Run Front End Repo in servier with localhost:5000
+
+- Run `$ bundle exec rspec` to run the test suite.
+
+<hr>
+
+<h2>Screen Shots</h2>
+
+<h3>Home Page</h3>
+
+![Home Page](app/assets/images/root.png)
+
+
+<h3>New User Sign Up</h3>
+
+![New User](app/assets/images/new_user.png)
+
+
+<h3>User Dashboard</h3>
+
+![User Dashboard](app/assets/images/user_dashboard.png)
+
+
+<h3>My Events</h3>
+
+![My Events](app/assets/images/my_events.png)
+
+
+<h3>All Events</h3>
+
+![Home Page](app/assets/images/all_events.png)
+
+
+<h3>Find Friends</h3>
+
+![Home Page](app/assets/images/search_friends.png)
+
+
+<h3>Search Friends</h3>
+
+![Home Page](app/assets/images/locate_friends.png)
+
+
+<h3>Footer</h3>
+
+![Home Page](app/assets/images/footer.png)
+
