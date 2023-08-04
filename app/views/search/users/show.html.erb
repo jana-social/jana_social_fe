@@ -9,6 +9,32 @@
       justify-content: center;
       height: 100vh;
     }
+
+     .button-container {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .accept-button {
+      background-color: #4caf50; /* Green */
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .reject-button {
+      background-color: #ff5733; /* Red */
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -22,19 +48,21 @@
       </div>
     </div>
   </header>
-  <div class="content-container">
-    <h1> Searched User Show Page </h1>
+  <div class="content-container"><br>
+    <h2><%= @user.username %></h2><br>
+        <img src="<%= @user.photo_url %>" class="img-thumbnail"><br><br><br><br>
     <ul>
-      <li><%= @user.username %></li>
-      <li><%= @user.likes %></li>
-      <li><%= @user.dislikes %></li>
-      <li><%= @user.bio %></li>
-      <img src="https://unsplash.com/photos/2l0CWTpcChI" alt="user_image">
-      <div class="button-container">
-        <%= button_to "Accept", search_users_path(user_id: session[:user_id], friend_id: @user.id, status: 'approved'), method: :post %>
-        <%= button_to "Reject", search_users_path(user_id: session[:user_id], friend_id: @user.id, status: 'declined'), method: :post %>
-      </div>
+      <li><b>Likes:</b> <%= @user.likes %></li><br>
+      <li><b>Dislikes:</b> <%= @user.dislikes %></li><br>
+      <li><b>Bio:</b> <%= @user.bio %></li><br>
     </ul>
+      <div class="button-container">
+       <div style="display: flex; gap: 20px;">
+        <%= button_to "Accept", search_users_path(user_id: session[:user_id], friend_id: @user.id, status: 'approved'), method: :post, class:"accept-button" %>
+
+        <%= button_to "Reject", search_users_path(user_id: session[:user_id], friend_id: @user.id, status: 'declined'), method: :post, class:"reject-button" %>
+        </div>
+      </div>
   </div>
 </body>
 </html>
