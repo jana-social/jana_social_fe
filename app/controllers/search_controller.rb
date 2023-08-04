@@ -3,13 +3,10 @@ class SearchController < ApplicationController
 
   def search_dashboard
     @user = UserFacade.new.find_user(session[:user_id])
-
-    if params[:latitude] && params[:longitude]
-      @latitude = params[:latitude]
-      @longitude = params[:longitude]
-    else
-      @latitude, @longitude = Geocoder.coordinates(@user.zipcode)
-    end
+    @latitude = params[:latitude] || session[:latitude] || Geocoder.coordinates(@user.zipcode)[0]
+    @longitude = params[:longitude] || session[:longitude] || Geocoder.coordinates(@user.zipcode)[1]
+    session[:latitude] = @latitude
+    session[:longitude] = @longitude
   end
 
   def index
