@@ -31,7 +31,7 @@ RSpec.describe "Get all events" do
       expect(current_path).to eq(events_path)
 
       expect(page.status_code).to eq(200)
-      expect(page).to have_content("All Events")
+      expect(page).to have_content("All Public Events")
 
       within("#event-1") do
         expect(page).to have_content("Casey's Sweet Quiet Gathering")

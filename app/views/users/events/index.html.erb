@@ -6,41 +6,31 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Jana Social</title>
-  <!-- Font Awesome icons (free version)-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-  <!-- Core theme CSS (includes Bootstrap)-->
   <%= stylesheet_link_tag 'user', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <!-- Fonts CSS-->
 </head>
 <body id="page-top">
   <header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center flex-column">
-      <!-- Masthead Heading-->
-      <h1 class="masthead-heading mb-0">Jana Social</h1>
-      <!-- Icon Divider-->
-      <div class="divider-custom divider-light">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-        <div class="divider-custom-line"></div>
-      </div>
-    </div>
+      <div class="d-flex align-items-center justify-content-center flex-column" style="height: 20px;">
+        <h1 class="masthead-heading mb-0 text-center">Jana Social</h1>
+        <div class="divider-custom divider-light">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+      </div>   
   </header>
   <section class="page-section portfolio" id="portfolio" style="background-color: #f2f2f2;">
     <div class="container">
-      <!-- Portfolio Section Heading-->
       <div class="text-center">
         <h2 class="page-section-heading text-secondary mb-0 d-inline-block">My Events</h2>
       </div>
-      <!-- Icon Divider-->
-      <!-- Log in User-->
       <div class="divider-custom">
         <div class="divider-custom-line"></div>
         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
         <div class="divider-custom-line"></div>
       </div>
-      <!-- Portfolio Grid Items-->
       <div class="row justify-content-center">
-        <!-- Portfolio Items-->
         <section id="hosting-events">
           <h3>Hosting Events</h3>
           <% if @hosting.empty? %>
@@ -74,7 +64,7 @@
       </div>
     </div>
     <div class="d-flex justify-content-center align-items-center">
-      <p class="pre-wrap lead mb-0"><%= link_to "Create New Event", user_events_path(current_user), class: "btn btn-primary" %></p>
+      <p class="pre-wrap lead mb-0"><%= link_to "Create New Event", oauth_path(current_user), class: "btn btn-primary" %></p>
     </div>
   </section>
 </body>
