@@ -31,6 +31,18 @@
  - Amy Spears: [GitHub](https://github.com/Amspears007) | [LinkedIn](https://www.linkedin.com/in/amy-marie-spears-900997105/)
  - Steven Stackhouse: [GitHub](https://github.com/stackmm) | [LinkedIn](https://www.linkedin.com/in/steven-stackhouse/)
 
+ <h3> How to install the project?</h3>
+
+- Fork and clone this repo
+- Run `bundle install`
+- Run `rails db:{create,migrate,seed}`
+- User will need to sign up for a mapquest api key [here](https://developer.mapquest.com/)
+- User will need to sign up for a unsplash api key and create account [here](https://unsplash.com/documentation#creating-a-developer-account)
+- `bundle exec rspec` to run the test suite
+
+
+<h3> JSON Contract</h3>
+
 
 This endpoint will return all users within the specific distance input radius
 
@@ -85,7 +97,9 @@ This endpoint will return all users within the specific distance input radius
         "bio":"Lorem ipsum dolor sit amet",
         "likes":"consectetur adipiscing elit",
         "dislikes":"sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        "profile_image_link":"https://images.unsplash.com/photo-1543807535-eceef0bc6599?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+        "profile_image_link":"https://images.unsplash.com/photo-1543807535-eceef0bc6599?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
       }
-    },
+    }
+  ]
+}
 ```
