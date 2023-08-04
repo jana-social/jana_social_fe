@@ -3,6 +3,10 @@ class SearchController < ApplicationController
 
   def search_dashboard
     @user = UserFacade.new.find_user(session[:user_id])
+    @latitude = params[:latitude] || session[:latitude] || Geocoder.coordinates(@user.zipcode)[0]
+    @longitude = params[:longitude] || session[:longitude] || Geocoder.coordinates(@user.zipcode)[1]
+    session[:latitude] = @latitude
+    session[:longitude] = @longitude
   end
 
   def index
@@ -21,7 +25,7 @@ class SearchController < ApplicationController
 
   def verify_login
     return if session[:user_id]
-    
+
     redirect_to login_path
     flash[:error] = "Login to Search"
   end

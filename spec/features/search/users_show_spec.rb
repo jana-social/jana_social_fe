@@ -15,12 +15,20 @@ RSpec.describe "User Show Page" do
         .to_return(status: 200, body: json_response1, headers: {})
 
       json_response2 = File.read("spec/fixtures/user_search_response.json")
-      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1/find_friends?distance=20")
+      stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/1/find_friends?distance=0")
         .to_return(status: 200, body: json_response2, headers: {})
 
       json_response3 = File.read("spec/fixtures/user_search_result.json")
       stub_request(:get, "https://jana-social-be.onrender.com/api/v1/users/2")
         .to_return(status: 200, body: json_response3, headers: {})
+
+      stub_request(:get, "https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=01417").
+      with(
+        headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Ruby'
+        }).to_return(status: 200, body: '[{"lat": "40.7128", "lon": "74.0060"}]', headers: {})
 
       visit root_path
 
@@ -28,7 +36,7 @@ RSpec.describe "User Show Page" do
       fill_in :password, with: "test"
       click_on "Log In"
       click_on "Discover New Friends"
-      fill_in "Search radius (miles)", with: 20
+      # fill_in "Search radius (miles)", with: 20
       click_on "Search"
       click_link "Karl"
     end
