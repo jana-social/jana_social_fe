@@ -3,7 +3,5 @@ class Users::PhotosController < ApplicationController
     @user = UserFacade.new.find_user(params[:id])
   end
 
-  def update
-    require 'pry'; binding.pry
-  end
+  def update; end
 end
