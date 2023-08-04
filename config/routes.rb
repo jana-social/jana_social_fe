@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   
 
-  get "search_dashboard", to: "search#dashboard", as: :search_dashboard
+  get "search_dashboard", to: "search#search_dashboard", as: :search_dashboard
   get "find_friends", to: "search#find_friends", as: :find_friends
   get "search_results", to: "search#search_results", as: :search_results
 

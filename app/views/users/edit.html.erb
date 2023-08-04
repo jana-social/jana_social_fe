@@ -1,4 +1,42 @@
-<%= link_to "Upload Photo", user_photo_edit_path %>
-
-<%= link_to "Update Profile", dashboard_path(@user.id) %>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Jana Social</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/path/to/custom.css">
+</head>
+<body id="page-top">
+    <header class="masthead bg-primary text-white text-center">
+      <div class="d-flex align-items-center justify-content-center flex-column" style="height: 20px;">
+        <h1 class="masthead-heading mb-0 text-center">Jana Social</h1>
+        <div class="divider-custom divider-light">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+      </div>   
+    </header>
+    <section class="page-section portfolio" id="portfolio">
+        <div class="container">
+            <div class="text-center">
+            <h2 class="page-section-heading text-secondary mb-0 d-inline-block">Update Profile</h2>
+            </div>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="update-photo">
+                  <%= link_to "Upload Photo", user_photo_edit_path %><br>
+                  <%= link_to "Update Profile", dashboard_path(@user.id) %>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
