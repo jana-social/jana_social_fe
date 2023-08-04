@@ -81,7 +81,6 @@ class RenderService
 
   def post_url(url, params)
     response = conn.post(url, params)
-    require 'pry'; binding.pry
     JSON.parse(response.body, symbolize_names: true)
   end
 
