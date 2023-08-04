@@ -22,10 +22,10 @@ RSpec.describe "Search" do
     end
 
     it "has an Dashboard page" do
-      expect(page).to have_content("Find New Friends")
-      click_on "Find New Friends"
+      expect(page).to have_content("Discover New Friends")
+      click_on "Discover New Friends"
       expect(current_path).to eq(search_dashboard_path)
-      expect(page).to have_content("Find Friends")
+      expect(page).to have_content("Discover New Friends")
     end
 
     it "entering search radius returns users within your area" do

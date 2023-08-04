@@ -27,7 +27,7 @@ RSpec.describe "User Show Page" do
       fill_in :email, with: "stefanie@jaskolski-sanford.example"
       fill_in :password, with: "test"
       click_on "Log In"
-      click_on "Find New Friends"
+      click_on "Discover New Friends"
       fill_in "Search radius (miles)", with: 20
       click_on "Search"
       click_link "Karl"
