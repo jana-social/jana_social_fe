@@ -89,3 +89,44 @@ This creates a commented `config/application.yml` file and adds it to your `.git
 
 <hr>
 
+<h2>Screen Shots</h2>
+
+<h3>Home Page</h3>
+
+![Home Page](app/assets/images/root.png)
+
+
+<h3>New User Sign Up</h3>
+
+![New User](app/assets/images/new_user.png)
+
+
+<h3>User Dashboard</h3>
+
+![User Dashboard](app/assets/images/user_dashboard.png)
+
+
+<h3>My Events</h3>
+
+![My Events](app/assets/images/my_events.png)
+
+
+<h3>All Events</h3>
+
+![Home Page](app/assets/images/all_events.png)
+
+
+<h3>Find Friends</h3>
+
+![Home Page](app/assets/images/search_friends.png)
+
+
+<h3>Search Friends</h3>
+
+![Home Page](app/assets/images/locate_friends.png)
+
+
+<h3>Footer</h3>
+
+![Home Page](app/assets/images/footer.png)
+
