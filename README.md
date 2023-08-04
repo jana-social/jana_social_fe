@@ -35,9 +35,7 @@
 
 - Fork and clone this repo
 - Run `bundle install`
-- Run `rails db:{create,migrate,seed}`
 - User will need to sign up for a mapquest api key [here](https://developer.mapquest.com/)
-- User will need to sign up for a unsplash api key and create account [here](https://unsplash.com/documentation#creating-a-developer-account)
 - `bundle exec rspec` to run the test suite
 
 
