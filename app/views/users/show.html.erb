@@ -22,7 +22,7 @@
                 <p>What I like: <%= @user.likes %></p>
                 <p>What I try to stay away from: <%= @user.dislikes %></p>
                 <p>Profile Picture: <img src="<%= @user.photo_url %>" class="img-thumbnail"></p>
-                <div class=page-link><%= link_to "Update My Profile Photo", edit_user_path(current_user) %></div>
+                    <div class=page-link><%= link_to "Update My Profile", edit_user_path(current_user) %></div>
             </div>
         </header>
 </html>

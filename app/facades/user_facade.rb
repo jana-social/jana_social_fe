@@ -33,6 +33,11 @@ class UserFacade
     @user = User.new(json[:data])
   end
 
+  def send_photo(user_id, file)
+    json = service.upload_photo(user_id, file)
+    @user = User.new(json[:data])
+  end
+
   private
 
   def service
