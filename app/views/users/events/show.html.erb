@@ -1,2 +1,47 @@
-<%= link_to "Delete Event" %>
-<%= link_to "Update Event" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Jana Social</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+  <%= stylesheet_link_tag 'user', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body id="page-top">
+  <header class="masthead bg-primary text-white text-center">
+    <div class="d-flex align-items-center justify-content-center flex-column" style="height: 20px;">
+      <h1 class="masthead-heading mb-0 text-center">Jana Social</h1>
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+      </div>
+    </div>
+  </header>
+  <section class="page-section portfolio" id="portfolio" style="background-color: #f2f2f2;">
+    <div class="container">
+      <div class="text-center">
+<h2 class="page-section-heading text-secondary mb-0 d-inline-block">Update Event</h2>
+      </div>
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="d-flex justify-content-center align-items-center">
+          <p class="pre-wrap lead mb-0">
+            <%= link_to "Delete Event", class: "btn btn-primary" %>
+          </p>
+          <span style="margin: 0 5px;"></span>
+          <p class="pre-wrap lead mb-0">
+            <%= link_to "Update Event", class: "btn btn-primary" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

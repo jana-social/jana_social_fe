@@ -5,6 +5,11 @@ class Users::EventsController < ApplicationController
     session[:user_id_event] = params[:user_id]
   end
 
+  def show
+    @event = EventsFacade.new.get_one_event(params[:id])
+    @user = params[:user_id]
+  end
+
   def new
     @event = EventsFacade.new.get_one_event(params[:event_id])
     @user = params[:user_id]
