@@ -18,6 +18,28 @@
       text-align: center;
     }
   </style>
+
+  <script>
+    document.getElementById("location").addEventListener("click", getLocation)
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            window.location.href = "<%= search_dashboard_path %>" + "?latitude=" + latitude + "&longitude=" + longitude + "&radius=<%= params[:radius]%>";
+          },
+          function(error) {
+            console.error("Error Code = " + error.code + " - " + error.message);
+          }
+        );
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+  </script>
 </head>
 <body>
     <header class="masthead bg-primary text-white text-center">
@@ -28,15 +50,15 @@
           <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
           <div class="divider-custom-line"></div>
         </div>
-      </div>   
+      </div>
     </header>
 
   <div class="center-text">
     <h2>Find Friends</h2>
   </div>
-  
+
   <div class="content-container">
-    <img src="https://www.mapquestapi.com/staticmap/v5/map?key=<%= Figaro.env.MAPQUEST_API_KEY %>&center=<%= @user.zipcode %>&size=400,300@2x" alt="Static Map">
+    <img src="https://www.mapquestapi.com/staticmap/v5/map?key=<%= Figaro.env.MAPQUEST_API_KEY %>&center=<%= @latitude %>,<%= @longitude %>&size=400,300@2x" alt="Static Map">
 
       <%= form_tag search_results_path, method: :get do %>
         <div class="form-group">
@@ -46,7 +68,8 @@
           <% hidden_field_tag :radius, params[:radius], min: 1, max: 2500, class: 'form-control', id: 'radius-input' %>
         </div>
         <%= submit_tag 'Search', class: 'btn btn-primary' %>
-      <% end %>
+      <% end %><br>
+    <button id="location"> Use My Location </button>
 
       <script>
           // Get references to the slider and input elements
