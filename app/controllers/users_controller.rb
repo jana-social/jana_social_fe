@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def new; end
 
   def create
-    UserFacade.new.create_user(user_params)
+    UserFacade.new.create_user(user_create_params)
     flash[:success] = "Your account has been created, go ahead and log in!"
     redirect_to root_path
   end
@@ -35,5 +35,9 @@ end
 private
 
 def user_params
-  params.require(:user).permit(:username, :email, :password, :zipcode, :street_address, :bio, :likes, :dislikes, :profile_image_link, :latitude, :longitude)            
+  params.require(:user).permit(:username, :email, :password, :zipcode, :street_address, :bio, :likes, :dislikes, :profile_image_link, :latitude, :longitude)
+end
+
+def user_create_params
+  params.permit(:username, :email, :password, :zipcode)
 end
